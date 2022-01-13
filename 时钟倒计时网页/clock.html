@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旋转时钟</title>
+    <link rel="stylesheet" href="clock.css">
+
+    <script src="clock.js"></script>
+
+</head>
+
+<body>
+    <div class="background">
+        <img src="images/0.jpg" alt="">
+    </div>
+    <!-- 外面的大盒子 -->
+    <div id="wrapper" class="wrapper">
+        <!-- 五个部分都具有timebox这个盒子类样式 -->
+        <div class="timebox month" id="month"></div>
+        <div class="timebox date" id="date"></div>
+        <div class="timebox hour" id="hour"></div>
+        <div class="timebox minute" id="minute"></div>
+        <div class="timebox second" id="second"></div>
+    </div>
+    <div id="box">
+        <h1>距离楠竹和美姬会面还有</h1>
+        <div id="time">
+            <span id="d">**天</span>
+            <strong><span id="h">**时</span></strong>
+            <strong><span id="m">**分</span></strong>
+            <strong><span id="s">**秒</span></strong>
+        </div>
+    </div>
+    <script src="common.js"></script>
+    <script>
+        var daySpan = my$('d');
+        var hourSpan = my$('h');
+        var minuteSpan = my$('m');
+        var secondSpan = my$('s');
+        TimeRow();
+        setInterval(TimeRow, 1000)
+
+        function TimeRow() {
+            var end = new Date('2022-01-14 17:00:00');
+            var start = new Date();
+            var time = getInterval(start, end);
+            setInnerText(daySpan, time.day + '天');
+            setInnerText(hourSpan, time.hour + '时');
+            setInnerText(minuteSpan, time.minute + '分');
+            setInnerText(secondSpan, time.second + '秒');
+        }
+    </script>
+</body>
+
+</html>
