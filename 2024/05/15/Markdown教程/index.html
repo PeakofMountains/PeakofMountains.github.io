@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Markdown教程 | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Markdown教程，markdown书写简易手册.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown教程">
+<meta property="og:url" content="https://peakofmountains.github.io/2024/05/15/Markdown%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="Markdown教程，markdown书写简易手册.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://peakofmountains.github.io/img/202405131356059.jpg">
+<meta property="article:published_time" content="2024-05-15T07:30:00.000Z">
+<meta property="article:modified_time" content="2024-05-15T07:33:43.521Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://peakofmountains.github.io/img/202405131356059.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://peakofmountains.github.io/2024/05/15/Markdown%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Markdown教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-15 15:33:43'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Markdown教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2024-05-15T07:33:43.521Z" title="更新于 2024-05-15 15:33:43">2024-05-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Markdown教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在平时码代码写文档时用的最多的就是markdown语言了，但有时候一些不常用的功能会忘了书写格式，本文旨在做一个Markdown教程兼语法手册，方便我们学习和平时使用查询，在进入教程前，先要感谢多个网站提供的教程或启发：</p>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown官方手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.javatiku.cn/pytorch/16606.html">笨鸟教程</a></li>
+</ul>
+</blockquote>
+<ul>
+<li>Markdown是一种轻量级标记语言，允许使用者以易读易写的纯文本格式编写文档，易读意味着编写好的markdown即使不经过编辑器渲染依然能很清晰的理解文档格式内容，例如 <strong>强调</strong> 和 **强调** 给人的感觉是类似的。</li>
+<li>Markdown编写的文档可导出为多种常用格式的文档，如 HTML、Word、PDF、Epub、思维导图等</li>
+<li>Markdown的轻量但强大的功能使其被广泛应用在各种技术文档中，很多语言或工具都兼容 Markdown语言并提供相应的插件</li>
+<li>Markdown语言被Github、简书等作为撰写文档的首选语言</li>
+<li>Markdown提供书写文档的各种格式，如 标题、链接、代码块、表格、列表、引用图片等<br>…</li>
+</ul>
+<p><em>Markdown作为一种工具类语言，因此强烈建议在实践中学习，对照教程一步步实验每个功能能帮助学习者更快更牢固地掌握其使用方法</em></p>
+<p>话不多说，快来看看Markdown到底能帮我们做到些什么！</p>
+<hr>
+<h2 id="环境配置与工具准备："><a href="#环境配置与工具准备：" class="headerlink" title="环境配置与工具准备："></a>环境配置与工具准备：</h2><blockquote>
+<ul>
+<li>Windows操作系统，Linux未测试但不影响学习</li>
+<li>VSCode编辑器(支持markdown语法的均可，如Typora)</li>
+<li>插件：在VSCode中安装 <code>Markdown Preview Enhanced</code> 插件，右键markdown文档选择 <code>Markdown Preview Enhanced：Open Preview to the Side</code> 即可在侧边实时预览书写效果</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="多级标题"><a href="#多级标题" class="headerlink" title="多级标题"></a>多级标题</h2><p>写文档第一步就是写标题了，markdown语法中提供了多级标题的功能，使用方式如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># h1 一级标题 </span></span><br><span class="line"><span class="section">## h2 二级标题</span></span><br><span class="line"><span class="section">### h3  </span></span><br><span class="line"><span class="section">#### h4  </span></span><br><span class="line"><span class="section">##### h5  </span></span><br><span class="line"><span class="section">###### h6  </span></span><br></pre></td></tr></table></figure>
+<p><em>标题级数越高字体越小，不同级的标题会自动形成标题目录</em></p>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落方面要说明的是markdown中在段尾用 <code>两个空格+回车</code> 或 <code>一个空行</code> 来实现分段<br>如果想要完全分割两部分，可以用下面的方式建立分割线来明确分割：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">***</span></span><br><span class="line"><span class="strong">* * * </span></span><br><span class="line"><span class="strong">**</span><span class="strong">***</span></span><br><span class="line"><span class="strong">- - - </span></span><br><span class="line"><span class="strong">------</span></span><br></pre></td></tr></table></figure>
+<p>这几种标记都能产生分割线，效果相同</p>
+<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><p>有时候有文字强调的需求，markdown提供了 斜体、粗体、粗斜体、删除线、下划线 等工具，使用方法如下：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line"><span class="emphasis">_斜体文本_</span></span><br><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="strong">__粗体文本__</span></span><br><span class="line"><span class="strong">**<span class="emphasis">*粗斜体文本*</span>**</span></span><br><span class="line"><span class="strong">__<span class="emphasis">_粗斜体文本_</span>__</span></span><br><span class="line">~~删除线文本~~</span><br></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<blockquote>
+<p><em>斜体文本</em><br><em>斜体文本</em><br><strong>粗体文本</strong><br><strong>粗体文本</strong><br><em><strong>粗斜体文本</strong></em><br><em><strong>粗斜体文本</strong></em><br><del>删除线文本</del></p>
+</blockquote>
+<p>下划线样式是通过使用HTML中的<code>&lt;u&gt;&lt;/u&gt;</code>标签实现的：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>下划线文本<span class="language-xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>效果： <u>下划线文本</u><br><em>markdown还支持更多的HTML标签的使用，很方便，教程后面会有<a href="#html%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">相关介绍</a></em></p>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>文档编写中有时候需要只是显示一个符号，而不是使用符号的功能，那就是转义字符的用武之地了，markdown和大多数编程语言一样，都使用反斜杠 <code>\</code> 来转义特殊字符，使用方式：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">_正常斜体_</span></span><br><span class="line">\<span class="emphasis">_被转义的显示\_</span></span><br></pre></td></tr></table></figure>
+<p>效果：<em>正常斜体</em> _被转义的显示_</p>
+<h2 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h2><p>脚注是对文本的补充说明，当使用脚注标记时，markdown会自动为脚注创建一个超链接，使用者可点击该链接或悬停在上面以查看脚注的内容，语法如下：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我管理代码所用的网站是Github[^1]。</span><br><span class="line">[<span class="symbol">^1</span>]: <span class="link">https://github.com</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>脚注的内容可放在文档的任意位置，但是建议放在文档末尾，方便统一管理</li>
+<li>脚注效果和论文中的参考文献相同，但注意有的平台不支持脚注显示</li>
+</ul>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>markdown支持有序列表和无序列表</p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表用 <code>*</code>, <code>+</code>, <code>-</code> 作为列表标记，使用时需要在标记后添加一个空格再书写内容，列表标记也可混用，使用方法：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"><span class="bullet">*</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">+</span> 第一项</span><br><span class="line"><span class="bullet">+</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第一项</span><br><span class="line"><span class="bullet">-</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"><span class="bullet">+</span> 第二项</span><br><span class="line"><span class="bullet">-</span> 第三项</span><br></pre></td></tr></table></figure>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>有序列表使用 <code>数字.</code>作为列表标记，同样也要敲一个空格后书写内容，使用方法：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="bullet">2.</span> 第二项</span><br><span class="line"><span class="bullet">3.</span> 第三项</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h3><p>列表嵌套只须在子列表的选项前添加三个或三个以上空格即可，列表标记也可以使用字体样式，如倾斜加粗等，无序有序列表都能嵌套可混用，具体用法：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 无序有序混用嵌套:</span><br><span class="line"><span class="bullet">    1.</span> 第一步</span><br><span class="line"><span class="bullet">    2.</span> 第二步</span><br><span class="line"><span class="emphasis">_1._</span> 列表标记可用字体样式：</span><br><span class="line"><span class="bullet">    1.</span> 第一步</span><br><span class="line"><span class="bullet">    2.</span> 第二步</span><br></pre></td></tr></table></figure>
+<h3 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h3><p>markdown中也可实现任务清单列表的撰写，格式同一般列表类似，使用<code>[]</code>标记未完成，<code>[x]</code>标记完成，列表的内容也可用字体样式，如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> [x] ~~学习markdown~~</span><br><span class="line"><span class="bullet">*</span> [ ] 写博客</span><br></pre></td></tr></table></figure>
+<p>具体效果：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <del>学习markdown</del></li>
+<li><input disabled="" type="checkbox"> 写博客</li>
+</ul>
+<h2 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h2><p>使用多个标记 <code>&gt;</code> 来创建一个区块，常用来在文档中书写引用内容或者表示强调，注意：标记 <code>&gt;</code> 后要紧跟一个空格再书写内容<br>区块也支持嵌套<br>区块和列表也可以嵌套</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块第一行</span></span><br><span class="line"><span class="quote">&gt; 区块第二行</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 区块最外层</span></span><br><span class="line"><span class="quote">&gt; &gt; 第一层嵌套</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 1. 区块中</span></span><br><span class="line"><span class="quote">&gt; 2. 用列表</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="code">    &gt; 列表中</span></span><br><span class="line"><span class="code">    &gt; 用区块</span></span><br><span class="line"><span class="code">2. 第二项</span></span><br></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<blockquote>
+<p>区块第一行<br>区块第二行</p>
+</blockquote>
+<blockquote>
+<p>区块最外层</p>
+<blockquote>
+<p>第一层嵌套</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<ol>
+<li>区块中</li>
+<li>用列表</li>
+</ol>
+</blockquote>
+<ol>
+<li>第一项<blockquote>
+<p>列表中<br>用区块</p>
+</blockquote>
+</li>
+<li>第二项</li>
+</ol>
+<h2 id="代码段与代码块"><a href="#代码段与代码块" class="headerlink" title="代码段与代码块"></a>代码段与代码块</h2><p>对文档中的代码或方法名等要与普通文本区分开就可以使用此功能，有两种方式：</p>
+<ol>
+<li>单行代码片段：<br>用两个 ` 符号将代码包裹，如：`System.out.println();`</li>
+<li>多行代码区块：<br>用三个 ` 来包裹代码段，如：<br>```java<br>int a &#x3D; 1;<br>int b &#x3D; 1;<br>System.out.println(a+b);<br>```</li>
+</ol>
+<p>效果展示：</p>
+<ol>
+<li>单行代码片段： <code>print();</code></li>
+<li>多行代码区块： <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">System.out.println(a+b);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="内联链接"><a href="#内联链接" class="headerlink" title="内联链接"></a>内联链接</h3><p>创建一个链接，实现点击文字跳转链接，格式： <code>[链接名称](链接地址)</code> ，例如：<br><code>[GitHub](https://github.com)</code> 效果： <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a></p>
+<h3 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h3><p>直接用 <code>&lt;</code> 和 <code>&gt;</code> 将地址包裹，地址内容就是链接名字，点击链接跳转链接所示的地址，如 <code>&lt;https://github.com/&gt;</code> 效果： <a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a></p>
+<h3 id="脚注链接"><a href="#脚注链接" class="headerlink" title="脚注链接"></a>脚注链接</h3><p>将链接地址与链接文本分离，链接地址统一放在文档末尾，方便维护和管理，格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Github</span>][<span class="symbol">github_link</span>]</span><br><span class="line">[<span class="symbol">github_link</span>]:<span class="link">https://github.com</span></span><br></pre></td></tr></table></figure>
+<h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>在文档内通过锚点链接在不同标题部分跳转，格式: <code>[跳转](#要跳转的标题)</code>，例如： <code>详情请看[后续介绍](#高级技巧)</code>，效果展示：<br>详情请看<a href="#%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7">后续介绍</a></p>
+<h3 id="邮件链接"><a href="#邮件链接" class="headerlink" title="邮件链接"></a>邮件链接</h3><p>文档阅读者点击链接直接发送邮件，格式：<code>[邮件联系](mailto:example@example.com)</code>，效果：<br><a href="mailto:example@example.com">邮件联系</a></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>markdown文档中也支持插入图片，支持png、jpg、jpeg、svg、gif等格式图片，插入格式：<code>![图片显示内容](图片地址)</code>，<strong>注意</strong>：</p>
+<ul>
+<li>图片显示内容可为空</li>
+<li><em>图片显示内容部分是图片无法显示的时候替代图片显示的内容</em></li>
+<li><code>[]</code>中间也可以是图片，实现点击图片跳转链接的功能</li>
+<li>图片地址用绝对地址或相对地址均可<br>使用方法：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">logo图标</span>](<span class="link">https://.../logo.jpg</span>)</span><br><span class="line">![<span class="string">logo图标</span>](<span class="link">/img/logo.jpg</span>)</span><br></pre></td></tr></table></figure>
+实际效果：直接显示图片，大小位置不可调，鼠标放在图片上显示<code>[]</code>中的图片名称<br>如果想调整图片大小位置显示方式，可以用HTML标签来插入图片，如：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://.../logo.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>在markdown中可制作简易表格，用<code>|</code>来分隔不同单元格，用<code>-</code>来分割表头和其他行，在分割行可以用<code>:---</code>、<code>---:</code>、<code>:---:</code>来设置列的对齐方式，表格里的字体也可设置字体样式，如：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 标签   |      可选值    | 内容 |</span><br><span class="line">| :----- | ------------: | :---:|</span><br><span class="line">|<span class="strong">**img<span class="emphasis">_top** | _</span>true/false_    |false|</span></span><br><span class="line"><span class="strong">|**</span>index<span class="emphasis">_bg<span class="strong">**| _true/false/url_|true|</span></span></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="right">可选值</th>
+<th align="center">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>img_top</strong></td>
+<td align="right"><em>true&#x2F;false</em></td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left"><strong>index_bg</strong></td>
+<td align="right"><em>true&#x2F;false&#x2F;url</em></td>
+<td align="center">true</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><p>上面的部分是常用的markdown语法，还有一些技巧在面对特定的任务时有更灵活多变的效果，下面也做简单介绍</p>
+<h3 id="HTML支持"><a href="#HTML支持" class="headerlink" title="HTML支持"></a>HTML支持</h3><p>要在markdown文档中实现一些超出markdown基本语法的功能就需要借助HTML的标签了<br>HTML在markdown中主要应用在哪些地方：</p>
+<ul>
+<li>插入复杂的元素：如创建样式复杂的表格</li>
+<li>更加灵活的布局：如设置图片的显示大小、位置</li>
+<li>更加美观的样式：如自定义字体的样式、颜色</li>
+<li>提供交互的功能：如插入按钮、提交表单等交互元素<br><strong>注意：</strong></li>
+<li>大多数的Markdown解析器支持原生的HTML，可直接在markdown中书写使用，插入标签，无需额外的语法</li>
+<li>Markdown不一定在HTML中起作用，因此HTML中尽可能用HTML的tags代替markdown，尽量避免在HTML标签中使用markdown的语法样式，如设置字体加粗等</li>
+</ul>
+<h4 id="HTML基本用法"><a href="#HTML基本用法" class="headerlink" title="HTML基本用法"></a>HTML基本用法</h4><ol>
+<li>不在markdown涵盖范围内的标签都可直接在文档内用HTML撰写，常用的有 <code>&lt;kbd&gt;</code>,<code>&lt;b&gt;</code>,<code>&lt;i&gt;</code>,<code>&lt;em&gt;</code>,<code>&lt;sup&gt;</code>,<code>&lt;sub&gt;</code>,<code>&lt;br&gt;</code> 等，使用方法举例：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用快捷键<span class="language-xml"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span></span>Ctrl<span class="language-xml"><span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span>+<span class="language-xml"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span></span>C<span class="language-xml"><span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span>复制</span><br></pre></td></tr></table></figure>
+效果： 使用快捷键<kbd>Ctrl</kbd>+<kbd>C</kbd>复制</li>
+<li>markdown中也直接支持原生的HTML，<code>&amp;</code>，<code>&lt;</code>，<code>&gt;</code>符号会自动转成HTML实体，这种支持方便在markdown中使用HTML原始码来操作，例如在markdown中直接写入下面HTML内容：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;周一&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;周二&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;周三&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;晴&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;雨&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;多云&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+效果如下：<table>
+ <tr>
+     <th>周一</th>
+     <th>周二</th>
+     <th>周三</th>
+ </tr>
+ <tr>
+     <th>晴</th>
+     <th>雨</th>
+     <th>多云</th>
+ </tr>
+</table></li>
+</ol>
+<h4 id="更多样的样式"><a href="#更多样的样式" class="headerlink" title="更多样的样式"></a>更多样的样式</h4><p>借助HTML内联CSS定制样式，如 <code>&lt;style&gt;&lt;/style&gt;</code> 标签或 <code>style</code> 属性定制CSS样式，如<code>&lt;p style=&quot;color: orange;&quot;&gt;这段文字将显示为橘色！&lt;/p&gt;</code>，效果：</p>
+<p style="color: orange;">这段文字将显示为橘色！</p>
+
+<h4 id="更灵活的布局"><a href="#更灵活的布局" class="headerlink" title="更灵活的布局"></a>更灵活的布局</h4><p>HTML标签允许自定义布局，例如对图片的宽度、高度、对齐方式等markdown没办法直接实现，但是可以插入HTML标签来间接实现，例如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://example.com/logo.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;50&quot;</span> <span class="attr">height</span>=<span class="string">&quot;60&quot;</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="公式书写"><a href="#公式书写" class="headerlink" title="公式书写"></a>公式书写</h3><p>文档中有时会有插入公式的需求，Markdown支持直接书写并渲染公式<br>Markdown Preview Enhanced 使用<a target="_blank" rel="noopener" href="https://github.com/KaTeX/KaTeX">KaTeX</a>或者<a target="_blank" rel="noopener" href="https://github.com/mathjax/MathJax">MathJax</a>来渲染数学表达式<br>KaTeX性能更快,MathJax特性更多，markdown公式有两种显示方式：</p>
+<ol>
+<li>行显示： <code>$f(x)$</code> 或 <code>\(f(x)\)</code></li>
+<li>块显示： <code>$$f(x)$$</code> 或 <code>\[f(x)\]</code> 或用代码块的方式<br><em>注意块显示一行只能有一个公式</em>，使用实例：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 行显示： --&gt;</span><br><span class="line">$f(x)=sin(x)$</span><br><span class="line">\(g(x)=cos(x)\)</span><br><span class="line">&lt;!-- 块显示 --&gt;</span><br><span class="line">$$\sum<span class="emphasis">_&#123;n=1&#125;^&#123;10&#125;f(x)+g(x)$$ </span></span><br><span class="line"><span class="emphasis">\[\sum_</span>&#123;n=1&#125;^&#123;5&#125;f(x)+g(x)\] </span><br></pre></td></tr></table></figure>
+数学代码块显示格式：<br>```math<br>f(x) &#x3D; sin(x)+cos(x)<br>```<br>本博客中未配置渲染公式，所以暂不展示公式效果，经过笔者在VSCode中测试，显示正常</li>
+</ol>
+<hr>
+<h2 id="笔者的话"><a href="#笔者的话" class="headerlink" title="笔者的话"></a>笔者的话</h2><ul>
+<li>不同的Markdown编辑器和解释环境可能会有不同的渲染效果。因此，在不同平台发布之前，预览你的Markdown文档是很重要的，例如笔者在使用markdown过程中就发现某些网站字体加粗显示只能用 <code>***加粗**</code> ，而 <code>__加粗__</code> 这种方式并不能实现加粗</li>
+<li>使用markdown书写文档时一定要以读者的角度审视文档，要方便读者理解文档内容，如：插入图片格式中<code>[]</code>中的内容可以为空，但是还是建议填上对图片的描述，这样当由于网络原因图片无法显示时，<code>[]</code>中的内容会填充图片部分，读者也就能理解此处图片的含义了</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://PeakofMountains.github.io">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://peakofmountains.github.io/2024/05/15/Markdown%E6%95%99%E7%A8%8B/">https://peakofmountains.github.io/2024/05/15/Markdown%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://PeakofMountains.github.io" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356059.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/profilePicture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">PeakofMountains</div><div class="author-info__description">一个热爱计算机技术的小菜鸟</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/PeakofMountains/"><i class="fab fa-github"></i><span>去作者Github主页看看</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/PeakofMountains" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:sifangjian@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #22b0ff;"></i></a><a class="social-icon" href="/img/qq.jpg" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #009bdb;"></i></a><a class="social-icon" href="/img/wechat.png" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #39dc7e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今天博客上线啦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">环境配置与工具准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">多级标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-number">4.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">字体样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-number">6.</span> <span class="toc-text">转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%B3%A8"><span class="toc-number">7.</span> <span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">8.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">8.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">8.2.</span> <span class="toc-text">有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8"><span class="toc-number">8.3.</span> <span class="toc-text">嵌套列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="toc-number">8.4.</span> <span class="toc-text">任务列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97"><span class="toc-number">9.</span> <span class="toc-text">区块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">10.</span> <span class="toc-text">代码段与代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">11.</span> <span class="toc-text">链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E9%93%BE%E6%8E%A5"><span class="toc-number">11.1.</span> <span class="toc-text">内联链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%93%BE%E6%8E%A5"><span class="toc-number">11.2.</span> <span class="toc-text">自动链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%B3%A8%E9%93%BE%E6%8E%A5"><span class="toc-number">11.3.</span> <span class="toc-text">脚注链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%9A%E7%82%B9%E9%93%BE%E6%8E%A5"><span class="toc-number">11.4.</span> <span class="toc-text">锚点链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%AE%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">11.5.</span> <span class="toc-text">邮件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">11.6.</span> <span class="toc-text">图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">12.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">13.</span> <span class="toc-text">高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E6%94%AF%E6%8C%81"><span class="toc-number">13.1.</span> <span class="toc-text">HTML支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">13.1.1.</span> <span class="toc-text">HTML基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%A0%B7%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">13.1.2.</span> <span class="toc-text">更多样的样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%B8%83%E5%B1%80"><span class="toc-number">13.1.3.</span> <span class="toc-text">更灵活的布局</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F%E4%B9%A6%E5%86%99"><span class="toc-number">13.2.</span> <span class="toc-text">公式书写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%80%85%E7%9A%84%E8%AF%9D"><span class="toc-number">14.</span> <span class="toc-text">笔者的话</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/15/Markdown%E6%95%99%E7%A8%8B/" title="Markdown教程"><img src="/img/202405131356059.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown教程"/></a><div class="content"><a class="title" href="/2024/05/15/Markdown%E6%95%99%E7%A8%8B/" title="Markdown教程">Markdown教程</a><time datetime="2024-05-15T07:33:43.521Z" title="更新于 2024-05-15 15:33:43">2024-05-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/202405131356055.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By PeakofMountains</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to <a href="https://PeakofMountains.github.io/">PeakofMountains Blog</a>! Have a nice day! <p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客以Hexo为框架"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="采用butterfly主题"></a>&nbsp;  <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="使用JsDelivr为静态资源进行CDN加速"></a> &nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.9" zIndex="-1" count="40" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
