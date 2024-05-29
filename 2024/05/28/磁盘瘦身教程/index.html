@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>磁盘瘦身教程 | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="磁盘瘦身教程">
+<meta property="og:url" content="https://peakofmountains.github.io/2024/05/28/%E7%A3%81%E7%9B%98%E7%98%A6%E8%BA%AB%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://peakofmountains.github.io/img/202405131356052.jpg">
+<meta property="article:published_time" content="2024-05-28T12:40:00.000Z">
+<meta property="article:modified_time" content="2024-05-29T04:10:29.779Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="磁盘清理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://peakofmountains.github.io/img/202405131356052.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://peakofmountains.github.io/2024/05/28/%E7%A3%81%E7%9B%98%E7%98%A6%E8%BA%AB%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '磁盘瘦身教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-29 12:10:29'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356052.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">磁盘瘦身教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2024-05-29T04:10:29.779Z" title="更新于 2024-05-29 12:10:29">2024-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A3%81%E7%9B%98%E7%98%A6%E8%BA%AB%E6%95%99%E7%A8%8B/">磁盘瘦身教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="磁盘瘦身教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong><a href="#%E6%B8%85%E7%90%86temp%E6%96%87%E4%BB%B6%E5%A4%B9">磁盘瘦身教程</a>:  本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</strong></p>
+<h2 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h2><ul>
+<li>操作系统：Windows 10</li>
+</ul>
+<hr>
+<h2 id="清理Temp文件夹"><a href="#清理Temp文件夹" class="headerlink" title="清理Temp文件夹"></a>清理Temp文件夹</h2><p>Temp文件夹是计算机系统在运行中的临时文件保存地方，例如常用的和不常用的软件运行时加载产生的临时文件都会存放在这里，在清理的时候他们的区别只在于：</p>
+<ol>
+<li>常用的软件在清理完成后我们下次打开运行软件，这些缓存的临时文件会再次被加载出来</li>
+<li>不常用的软件，例如曾经使用过但已经卸载的软件，我们清理掉他的临时文件就腾出了空间</li>
+</ol>
+<p>清理方法：<br>快捷键 <code>WIN</code>+<code>R</code> 调出运行窗口，在窗口中键入命令 <code>%temp%</code> 进入打开temp文件夹，此操作相当于在文件夹中进入路径 <code>C:\Users\username\AppData\Local\Temp</code> 其中 <code>username</code> 是自己计算机的用户名，清理其中所有文件和文件夹，提示正在占用的直接跳过。</p>
+<div class="note info flat"><p>注意：如果要尝试从路径进入Temp文件夹，而没有找到AppData文件夹，这是因为AppData保存软件数据被默认隐藏，这时候在任意文件夹的上方点击查看，勾选 <code>隐藏的项目</code> 选项就能显示出AppData等几个文件夹</p>
+</div>
+<p>这个清理腾出来的空间一般不大，如果我们之前并没有清理过Temp文件夹的话，第一次清理可能会发现清理出来的空间很大，但用一段时间后发现计算机C盘可用空间又变小了就是上面说的原因。</p>
+<h2 id="磁盘清理功能"><a href="#磁盘清理功能" class="headerlink" title="磁盘清理功能"></a>磁盘清理功能</h2><p>在C盘上<code>右键</code>-&gt;<code>属性</code>-&gt;<code>磁盘清理</code>，在弹出的窗口中选择想要清除的内容，例如勾选 <code>临时文件</code> 和 <code>缩略图</code> ，点击确定完成清理</p>
+<h2 id="将桌面大文件移动"><a href="#将桌面大文件移动" class="headerlink" title="将桌面大文件移动"></a>将桌面大文件移动</h2><p>很多计算机使用者习惯于将计算机桌面当成杂物堆，使用的时候都拿到桌面来，用完了不清理，时间久了就容易造成计算机C盘爆红，在路径 <code>C:\Users\username\</code> 的 <code>Desktop</code> 文件夹或者 <code>桌面</code> 文件夹上<code>右键</code>-&gt;<code>属性</code> 就能看到桌面上文件占据C盘的总空间大小，双击进去后就能看到在桌面的文件，将其中占据空间较大不常用的文件 <code>剪切</code> 后 <code>粘贴</code> 到其他非系统盘中</p>
+<div class="note warning flat"><p>注意：这里提到的移动桌面大文件指的只是将不常用的文件移动到非系统盘，而不是说通过一系列操作将 <code>桌面路径</code> 从C盘更改到别的盘。桌面存在的意义就是暂时存放常用的文件，它在C盘就保证了其运行的很快，因为我们常常将读写速度更高的固态硬盘作为C盘</p>
+</div>
+
+<h2 id="虚拟内存管理"><a href="#虚拟内存管理" class="headerlink" title="虚拟内存管理"></a>虚拟内存管理</h2><p>通过按 <code>win</code> 键输入 <code>查看高级系统设置</code> 来进入到高级系统设置页面，以此点击 <code>高级</code>-&gt;<code>性能设置</code>-&gt;<code>高级</code>，在页面的中间部分会显示当前虚拟内存的大小，这我们知道就行不要修改。<br>在任务管理器的 <code>性能</code> 栏能看到 <code>提高页面大小 = 虚拟内存 + 物理内存</code>，同时虚拟内存在使用中优先度是要高于物理内存的。<br>虚拟内存是磁盘分了一块空间给系统作为RAM使用，减小后可能会导致系统报错，软件无法正常运行，因此使用默认的大小即可，不建议减小，有特殊需求可以增大，例如笔者当时使用自己的笔记本跑机器学习的模型时就调大了虚拟内存的空间大小。<br>也不要移动虚拟内存的页面文件 <code>pagefile.sys</code> 到别的盘，虚拟内存的功能就决定了它必须位于计算机磁盘中读写速度最快的盘，一般就是C盘了。</p>
+<div class="note warning flat"><p>注意：强烈 <em><strong>不建议</strong></em> 减小虚拟内存的空间大小和移动虚拟内存页面文件，<em><strong>如果减小了虚拟内存的大小或移动虚拟内存页面文件可能有不可预料的后果发生</strong></em></p>
+</div>
+
+<h2 id="休眠文件管理"><a href="#休眠文件管理" class="headerlink" title="休眠文件管理"></a>休眠文件管理</h2><p>一般计算机在关机时会将内存的所有数据写入到 <code>hiberfil.sys</code> 休眠文件中方便下一次开机后将内存中数据再写回计算机重现关机时的状态<br>但是此功能和睡眠功能部分相同，差别在于睡眠功能是计算机保持耗电较少的开机状态，没关闭的应用保持打开的状态，在唤醒计算机后可立即恢复到离开时的状态，而休眠功能能在计算机关机后，下次开机时恢复到关机前的状态<br>不介意这点差别的用户可以通过下面命令关闭休眠功能，<strong>如果你经常用休眠功能那就别关</strong><br>休眠功能关闭方式：按下 <code>win</code> 键搜索 <code>cmd</code> ，<code>右键</code>-&gt;<code>以管理员身份运行</code>，在控制台窗口运行下面命令关闭休眠</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powercfg -h off</span><br></pre></td></tr></table></figure>
+<p>关闭成功后会发现休眠文件 <code>hiberfil.sys</code> 不见了<br>之后如果又需要使用休眠功能时使用下面代码开启：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powercfg -h on</span><br></pre></td></tr></table></figure>
+<h2 id="临时文件清理"><a href="#临时文件清理" class="headerlink" title="临时文件清理"></a>临时文件清理</h2><p>使用快捷键 <code>WIN</code>+<code>R</code> 键打开设置，选择 <code>系统</code>-&gt;<code>存储</code>-&gt;<code>临时文件</code>，等待扫描完成后，选中要清理的项进行删除，注意要根据清理项下面的介绍来决定是否清理</p>
+<h2 id="软件管理"><a href="#软件管理" class="headerlink" title="软件管理"></a>软件管理</h2><h3 id="安装路径设置"><a href="#安装路径设置" class="headerlink" title="安装路径设置"></a>安装路径设置</h3><p>计算机上很多软件下载安装包进行安装时会默认将软件安装到 <code>C:\Users\用户名\ProgramFiles</code> 路径或者 <code>C:\Users\用户名\AppData\Roaming</code> 路径，这部分软件安装在C盘会极大的占用C盘的空间，关于安装目录在这个<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/548340950/answer/2637630471">root大佬的回答</a>里有较详细的介绍<br>而这部分软件是可以自定义安装路径到非系统盘来节省C盘空间的，在安装界面中仔细找找，一般会在角落里或者以颜色偏淡的字体显示的 <code>自定义安装</code> ，点击 <code>自定义安装</code>-&gt;<code>浏览</code>，在出现的目录中选择别的磁盘作为安装路径，必要时可以在别的磁盘新建文件夹重命名后设置路径在此处，然后安装。<br>不要在安装的时候看到 <code>快速安装</code> 按钮就直接点击了，最好先找找有没有 <code>自定义安装</code> 选项，<code>快速安装</code> 就会采用C盘的默认安装路径作为软件安装路径。</p>
+<h3 id="避免安装捆绑软件"><a href="#避免安装捆绑软件" class="headerlink" title="避免安装捆绑软件"></a>避免安装捆绑软件</h3><p>设置安装路径是一方面，避免安装捆绑是另一方面，很多软件(特别是盗版或者破解软件)在安装时会在安装界面默认勾选几款捆绑软件，显示的字体一般比较小或者位置隐蔽，要有意识地仔细找找，取消勾选后再安装，推荐去软件官网下载软件，捆绑软件的情况比较少</p>
+<h3 id="下载缓存路径设置"><a href="#下载缓存路径设置" class="headerlink" title="下载缓存路径设置"></a>下载缓存路径设置</h3><p>安装好软件后，最好先进入到软件的设置界面，查看是否有 <code>文件管理</code> 或 <code>默认下载位置</code> 或 <code>缓存保存位置</code> 等软件专用的保存路径设置，大多数会默认将数据保存到C盘，如果可以设置的话最好将路径更改到别的盘，为方便管理避免混淆，最好将路径更改到软件安装文件夹路径里。<br>例如我的微信安装在 <code>E:\WeChat</code>，我就会在此目录下创建一个 <code>WeChat Files</code> 文件夹，之后在微信的设置里选择 <code>文件管理</code> 选项，将文件路径更改为 <code>E:\WeChat\WeChat Files</code></p>
+<h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>在卸载软件时最好通过 <code>设置</code> 中的 <code>更改或卸载程序</code> 来卸载软件或者在相关文件(例如快捷方式)上 <code>右键</code>-&gt;<code>属性</code>-&gt;<code>打开文件所在位置</code> 找到软件安装的根目录，运行一个<em>包含类似</em> <code>uninstall</code> 或 <code>uninst</code> 名字的exe文件，这个就是卸载程序，运行卸载程序进行卸载一般会将不必要的相关依赖都一起卸载。</p>
+<div class="note info flat"><p>注意卸载的时候也要关注卸载界面上的选项勾选，有的软件在卸载时还会默认勾选安装捆绑软件(血的教训😭)</p>
+</div>
+
+<h2 id="浏览器下载管理"><a href="#浏览器下载管理" class="headerlink" title="浏览器下载管理"></a>浏览器下载管理</h2><p>我们计算机上安装软件大多是通过浏览器下载安装包后运行安装包来安装的，平时在网页上浏览资料后也是在浏览器上直接下载，因此设置浏览器的下载路径就尤为重要了</p>
+<ol>
+<li>点击 <code>浏览器右上角</code>-&gt;<code>设置</code>-&gt;<code>下载内容</code>，更改下载内容的位置到非系统盘，最好建立一个文件夹好管理，例如我的浏览器下载位置就修改为了 <code>D:\Downloadfromchrome</code></li>
+<li>定期清理浏览器下载路径中的文件，例如安装过的软件安装包、不再使用的资料文件</li>
+</ol>
+<h2 id="回收站管理"><a href="#回收站管理" class="headerlink" title="回收站管理"></a>回收站管理</h2><p>文件放入回收站并不是将文件数据从计算机上抹除了，而是相当于放到暂存区了，放入回收站的文件依然可以恢复到原位置，此时放入回收站的文件仍占着磁盘的空间，对系统盘和非系统盘都是这样<br>在回收站里 <code>右键</code> 文件选择永久删除才是将数据从计算机上抹除了，或者在回收站上 <code>右键</code>-&gt;<code>清空回收站</code> 一次性将回收站内容永久删除</p>
+<div class="note warning flat"><p>注意：在清空回收站之前一定要先进入回收站检查，确认文件数据都不会再使用了再清空</p>
+</div>
+
+<h2 id="空间管理工具"><a href="#空间管理工具" class="headerlink" title="空间管理工具"></a>空间管理工具</h2><p>推荐几款我自己使用过效果不错的空间管理工具，有需要的可以去官网下载</p>
+<ol>
+<li>Everything<br>一款用于查找计算机文件的工具，在打开软件后会先经历一段时间的初始化(软件左下角显示状态)，在这段时间里，Everything会将全盘文件快速扫描建立目录，之后在上方搜索栏搜索文件就能很快的定位，速度近乎实时，在搜素出来的文件或文件夹上右键可以打开菜单</li>
+<li>SpaceSniffer<br>一款用于了解磁盘空间占有的工具，打开后先选择要查看的盘符点击<code>Start</code>，之后会自动扫描整个盘，将文件夹和文件以多级树状图的结构化布局呈现，橙色为文件夹，蓝色为文件。<br>同时也支持扫描指定的路径下所有文件和文件夹，在选盘符的界面点击下方的<code>Path</code> 进入路径选择界面，在这里可以选择希望扫描的文件夹，当然你也可以直接在 <code>Path</code> 右边的输入框内键入目标文件夹的绝对路径，选好后点击 <code>Start</code> 开启扫描<br>扫描完成后单击文件夹就可进入文件夹目录呈现下一层级的文件目录，双击标头可将当前文件夹操作界面放大<br>注意：我们能在此界面查看到很多重要文件，在了解文件的功能前不要为了清理空间盲目清理。</li>
+<li>FolderSize<br>一款用于显示文件夹大小的软件，在软件运行后，打开文件夹时就会在右侧显示当前文件夹下的一级子文件夹和文件的大小等相关信息</li>
+</ol>
+<h2 id="选用云服务"><a href="#选用云服务" class="headerlink" title="选用云服务"></a>选用云服务</h2><p>将计算机上不常用的大文件或者要备份的数据文件通过云服务上传到云平台上进行管理，例如百度网盘、阿里云盘等云托管平台，在需要使用的时候下载到本地，注意在云平台上最好也分门别类地管理文件，方便查找备份使用。</p>
+<h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>上面的教程中很多部分都讲的是如何清理C盘空间，其实别的盘也是一样的，也是需要科学管理的，如果在磁盘中不区分分类管理各个文件或软件，长此以往也会造成文件目录结构混乱、文件管理困难、磁盘爆红等后果。<br>磁盘清理只是给磁盘做了次大清洗，治标不治本，打个比方：磁盘大清理就相当于洗了一次彻底的澡，虽然这次干净了，但是之后不注意保持个人卫生，还是会很快变脏，最根本有效的方法就是时常清洁，保持干净卫生，在磁盘清理上来说就是要定期地清理多余、不常用的文件，平时注意软件的安装路径，定期清空回收站，学会科学的文件分类管理。将不常用的文件通过云服务上传到云盘里，用的时候下载，给本地腾出多余的空间来。</p>
+<div class="note warning flat"><p><em>注意：在你充分了解一个文件的功能并确认它对你没有用处之前不要轻易删除或者挪动文件或文件夹，特别是C盘的文件，有一部分是系统文件，在随意更改或挪动位置后可能引起系统故障，如果你没有把握决定是否清理某些文件，首先上网查询资料了解文件的功能，其次思考是否必须删除或更改移动此文件，最后当你一定要删除此文件而自己没把握时寻求专业人士的帮助。</em></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://PeakofMountains.github.io">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://peakofmountains.github.io/2024/05/28/%E7%A3%81%E7%9B%98%E7%98%A6%E8%BA%AB%E6%95%99%E7%A8%8B/">https://peakofmountains.github.io/2024/05/28/磁盘瘦身教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://PeakofMountains.github.io" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A3%81%E7%9B%98%E6%B8%85%E7%90%86/">磁盘清理</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356052.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/05/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%B8%83/" title="手把手搭建个人博客系列教程-七"><img class="cover" src="/img/202405131356059.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">手把手搭建个人博客系列教程-七</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">环境与工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%90%86Temp%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">3.</span> <span class="toc-text">清理Temp文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E6%B8%85%E7%90%86%E5%8A%9F%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">磁盘清理功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%A1%8C%E9%9D%A2%E5%A4%A7%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="toc-number">5.</span> <span class="toc-text">将桌面大文件移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">虚拟内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%91%E7%9C%A0%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">休眠文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E6%B8%85%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">临时文件清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">软件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">9.1.</span> <span class="toc-text">安装路径设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E5%AE%89%E8%A3%85%E6%8D%86%E7%BB%91%E8%BD%AF%E4%BB%B6"><span class="toc-number">9.2.</span> <span class="toc-text">避免安装捆绑软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E7%BC%93%E5%AD%98%E8%B7%AF%E5%BE%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">9.3.</span> <span class="toc-text">下载缓存路径设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6"><span class="toc-number">9.4.</span> <span class="toc-text">卸载软件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%AE%A1%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">浏览器下载管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E7%AB%99%E7%AE%A1%E7%90%86"><span class="toc-number">11.</span> <span class="toc-text">回收站管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">12.</span> <span class="toc-text">空间管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E7%94%A8%E4%BA%91%E6%9C%8D%E5%8A%A1"><span class="toc-number">13.</span> <span class="toc-text">选用云服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-number">14.</span> <span class="toc-text">想说的话</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn1.tianli0.top/npm/js-heo@1.0.12/metingjs/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Markdown-教程/&quot;);" href="javascript:void(0);">Markdown 教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356054.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-二</a><div class="blog-slider__text">本节完成个人博客搭建中博客文章的生成和发布</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-三</a><div class="blog-slider__text">本节分享个人博客搭建中文章书写的方法和技巧</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356054.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356060.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-五</a><div class="blog-slider__text">本节设置文章相关,侧边栏,footer,右下角按钮,404页面,特效,字体,本地搜索,显示模式,预加载动画,标签外挂等</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-六</a><div class="blog-slider__text">本节主要介绍如何借助PicGo搭建图床，如何实现Live2D,留言板,Valine评论区等功能板块</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-24</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-七</a><div class="blog-slider__text">本节主要介绍如何实现魔改菜单栏,夜间霓虹灯,个人卡片渐变色,个人卡片发光,页面样式调节等</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356052.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>手把手搭建个人博客系列教程-一 | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="本节完成个人博客搭建中工具和环境的安装和配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手搭建个人博客系列教程-一">
+<meta property="og:url" content="https://peakofmountains.github.io/2024/05/16/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%B8%80/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="本节完成个人博客搭建中工具和环境的安装和配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://peakofmountains.github.io/img/202405131356054.jpg">
+<meta property="article:published_time" content="2024-05-16T12:19:00.000Z">
+<meta property="article:modified_time" content="2024-05-24T08:42:52.105Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="博客搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://peakofmountains.github.io/img/202405131356054.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://peakofmountains.github.io/2024/05/16/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%B8%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '手把手搭建个人博客系列教程-一',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-24 16:42:52'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356054.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">手把手搭建个人博客系列教程-一</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2024-05-24T08:42:52.105Z" title="更新于 2024-05-24 16:42:52">2024-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/">博客搭建系列教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="手把手搭建个人博客系列教程-一"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong><a href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87">手把手搭建个人博客系列教程-一</a>: 主要完成工具和环境的安装和配置</strong><br>作为计算机专业的学生，一直想要有个专属于自己的个人博客，可以自定义博客样式和内容，但一直由于被各种琐事耽搁，曾经也尝试过CSDN、博客园等专门的博客书写网站，但曾经那个自定义博客的小梦想一直还埋藏在心里，最近趁着空闲，我决定实现我的这个小梦想，并一步步将我在搭建个人博客中所踩过的坑，总结出的经验分享出来，一方面是为了记录我对博客的理解，同时也希望这个浅薄的教程能给与我相似的爱好者一点帮助。<br>感谢在我个人博客搭建中提供参考和帮助的一些教程、网站</p>
+<blockquote>
+<p><strong>参考文档:</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo框架的官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://butterfly.js.org/">Butterfly主题的官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.fomal.cc/posts/e593433d.html">Fomalhaut🥝大佬的博客</a></li>
+</ul>
+</blockquote>
+<ul>
+<li>个人博客的搭建不仅仅能产生独属于自己的博客这样一个成果，在搭建的过程中也能了解一个博客网站的架构，实现的思路，同时在自己动手修改配置的过程中对个人的文档阅读等能力也是一种提升</li>
+<li>本博客的设计思路是：以Hexo为框架，Butterfly为主题，在此基础上进一步美化，最终形成一个功能多样，外观美观的博客网站</li>
+</ul>
+<hr>
+<h2 id="环境配置与工具准备"><a href="#环境配置与工具准备" class="headerlink" title="环境配置与工具准备"></a>环境配置与工具准备</h2><ul>
+<li>操作系统：Windows10 </li>
+<li>VSCode编辑器</li>
+</ul>
+<h2 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h2><p>Node.js是一种JavaScript的运行环境，给JavaScript运行在服务端提供了平台，是搭建网站的基础环境，下面是安装步骤：</p>
+<ol>
+<li>直接在<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js官网</a>下载安装文件</li>
+<li>运行安装文件，安装路径可以自定义，默认路径在 <code>C:\Program Files\nodejs\</code> ，使用时产生的缓冲数据就会在C盘，比较占空间，<em><strong>图省事的C盘战士可以直接一路默认选项点下去就好</strong></em></li>
+<li>安装完成后在cmd终端或VSCode终端使用下面命令验证是否安装成功或查看node.js和npm版本，<em>npm是Node.js的包管理工具，在安装Node.js时会自动安装</em>： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></li>
+<li>为节省C盘空间，更改npm的全局安装模块的存储路径和缓冲文件的存储路径，步骤如下：<ol>
+<li>在Node.js的安装目录创建两个文件夹<code>node_global</code>和<code>node_cache</code></li>
+<li>在VSCode终端或cmd终端中执行下面的命令来配置npm相关路径配置： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\nodejs\node_global&quot;</span><br><span class="line">npm config set cache &quot;D:\nodejs\node_cache&quot;</span><br></pre></td></tr></table></figure></li>
+<li>修改环境变量<ul>
+<li>在系统变量中添加变量<code>NODE_PATH</code>，变量内容为刚创建的<code>node_global</code>的路径+<code>node_modules</code>，例如<code>D:\nodejs\node_global\node_modules</code></li>
+<li>修改用户变量中的<code>PATH</code>变量，将默认的<code>C:\Users\Administrator\AppData\Roaming\npm</code>修改为设置的全局安装路径<code>D:\nodejs\node_global</code></li>
+</ul>
+</li>
+<li>测试<br> 安装常用的express模块来测试配置是否成功，<code>-g</code>参数是全局安装的意思，如果成功会安装在之前设置的node_global路径内 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express -g</span><br></pre></td></tr></table></figure>
+ 注：2022年之前安装的nodejs直接运行上述命令会报出<code>npm ERR! request to https://registry.npm.taobao.org/express failed, reason: certificate has expired</code>错误，提示更新证书，执行下面命令来更改镜像源，更改后能正常安装了： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h2><p>在cmd或VSCode终端使用npm来安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>安装完成后可以用<code>hexo-cli -v</code>来验证安装成功或查看版本</p>
+<h2 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h2><p>Git是一个开源的分布式版本控制系统，结合Github等代码托管平台常用作项目的版本控制和管理，对经常写代码的编程者来说Git是个不可或缺的工具<br>Git的安装也比较简单，网上能找到好多详细的安装教程，这里提供一个<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-install-setup.html">Git安装教程</a>仅供参考<br>安装完成后可在cmd中用<code>git --version</code>测试是否安装成功或查看Git版本<br>安装并配置好Git后，最好先简单学一点Git工具的使用方法，这里给一个我曾经用过的<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/git-five-minutes-tutorial.html">Git使用教程</a></p>
+<h2 id="创建挂载仓库"><a href="#创建挂载仓库" class="headerlink" title="创建挂载仓库"></a>创建挂载仓库</h2><p>使用挂载仓库有两个目的，一个是网站文件管理和代码托管，另一个是使用Github的Github Page服务<br>有两个推荐的：Github和Gitee，优缺点也很明显，Github国内访问较Gitee慢很多，但是Github比Gitee的生态环境更完善，是全球最大的代码托管平台，网站也更加稳定</p>
+<p><del>由于国内访问GitHub时常会访问异常或者加载速度太慢，我使用gitee作为Github的替代方案，下面以gitee为例：</del><br><del>1. 新建博客的仓库，名字随便起，选择开源选项</del><br><del>2. 用git将博客仓库克隆到本地，例：<code>git clone https://gitee.com/peakofmountains/blog.git</code>，注：要正常使用git工具，需要提前完成git配置(在gitee中仓库界面点击<code>克隆/下载</code>会给出配置的命令)</del><br><del>3. 在下载下来的博客仓库文件夹中创建文件<code>index.html</code>作为博客主页(仓库中必须包含<code>index.html</code>文件才能启动Gitee Pages服务)，<code>index.html</code>中包含最基本的HTML结构即可</del><br><del>4. index.html用git上传后就可以在项目仓库的Settings选项处开启Gitee Page服务，这样挂载博客的网站就配置好了</del></p>
+<div class="note danger flat"><p><em><strong>注意Gitee目前不能挂载了，Gitee Pages服务已被下线 现在是 2024&#x2F;5&#x2F;7，还没有恢复</strong></em></p>
+</div>
+
+<p>追求网站访问速度的可以等以后Gitee网站的Gitee Pages服务重新上线后改用Gitee的服务，不过重新上线时间我也说不上来</p>
+<h3 id="Github上创建博客仓库"><a href="#Github上创建博客仓库" class="headerlink" title="Github上创建博客仓库"></a>Github上创建博客仓库</h3><p>在Github上创建一个仓库作为挂载博客和托管博客代码文件的地方，仓库名字应为 <code>用户名+github.io</code> </p>
+<div class="note warning flat"><p>只有按照 <code>用户名+github.io</code> 的格式，Github才会对此仓库启动Github Page服务</p>
+</div>
+
+<p>启动Github Page服务后即可使用 <code>用户名.github.io</code> 作为自己博客的域名，此域名是免费的</p>
+<h3 id="配置Git连接Github"><a href="#配置Git连接Github" class="headerlink" title="配置Git连接Github"></a>配置Git连接Github</h3><p>这里配置Git连接Github是为了之后在本地使用自动部署工具快速完成本地博客部署打基础，到时候在本地修改完博客后，只需要在VSCode或git bash终端使用简单的<code>hexo d</code>命令即可完成博客的上传和部署工作，下面是配置的具体操作：</p>
+<ol>
+<li><p>打开git bash终端,输入</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p> 最后一个参数填写自己的邮箱就好，一路敲回车，最终会提示你.ssh文件保存在<code>C:\Users\你的用户名</code>路径，进去后找到.ssh文件夹，右键-&gt;打开方式-&gt;记事本 打开里面的id_rsa.pub，复制里面的全部内容(上面命令生成的rsa密钥)<br> <em><strong>注意：这个.ssh文件夹默认是隐藏的，如果没找到.ssh文件夹就点击上方的查看，选择显示隐藏项目选项</strong></em></p>
+</li>
+<li><p>在Github账户个人设置的Settings里找到SSH keys，新建一个SSH key，在内容处粘贴步骤2中的密钥，创建</p>
+</li>
+<li><p>验证是否成功，在git bash中用</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p> 回车后输入yes回车，出现打招呼提示和账户信息就是成功了。</p>
+ <div class="note warning flat"><p><em>注意:如果之前用过ssh连接其他主机，可能会和我一样出现<code> WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code>,提示这时候要用ssh连接github.com就需要重新指向</em></p>
+</div>
+ <div class="note info flat"><p>解决办法：先在.ssh目录中删掉known_hosts中缓存信息，然后在git bash中执行 <code>ssh-keygen -R github.com</code><br>提示更新成功就可以继续用<code>ssh -T git@github.com</code>进行测试了*</p>
+</div></li>
+<li><p><em>初次使用git需要配置下面设置，不是初次使用git连接GitHub的请忽略此条</em>：</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;GitHub绑定的邮箱&quot;</span><br><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://PeakofMountains.github.io">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://peakofmountains.github.io/2024/05/16/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%B8%80/">https://peakofmountains.github.io/2024/05/16/手把手搭建个人博客系列教程-一/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://PeakofMountains.github.io" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356054.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/05/15/Markdown%E6%95%99%E7%A8%8B/" title="Markdown教程"><img class="cover" src="/img/202405131356053.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Markdown教程</div></div></a></div><div class="next-post pull-right"><a href="/2024/05/17/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%BA%8C/" title="手把手搭建个人博客系列教程-二"><img class="cover" src="/img/202405131356058.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">手把手搭建个人博客系列教程-二</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/05/17/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%B8%89/" title="手把手搭建个人博客系列教程-三"><img class="cover" src="/img/202405131356053.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-17</div><div class="title">手把手搭建个人博客系列教程-三</div></div></a></div><div><a href="/2024/05/17/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E4%BA%8C/" title="手把手搭建个人博客系列教程-二"><img class="cover" src="/img/202405131356058.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-17</div><div class="title">手把手搭建个人博客系列教程-二</div></div></a></div><div><a href="/2024/05/19/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B-%E5%9B%9B/" title="手把手搭建个人博客系列教程-四"><img class="cover" src="/img/202405131356054.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-19</div><div class="title">手把手搭建个人博客系列教程-四</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">环境配置与工具准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">Node.js安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">Hexo的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">Git的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E4%BB%93%E5%BA%93"><span class="toc-number">6.</span> <span class="toc-text">创建挂载仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93"><span class="toc-number">6.1.</span> <span class="toc-text">Github上创建博客仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit%E8%BF%9E%E6%8E%A5Github"><span class="toc-number">6.2.</span> <span class="toc-text">配置Git连接Github</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn1.tianli0.top/npm/js-heo@1.0.12/metingjs/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Markdown-教程/&quot;);" href="javascript:void(0);">Markdown 教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356054.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-二</a><div class="blog-slider__text">本节完成个人博客搭建中博客文章的生成和发布</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-二/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-三</a><div class="blog-slider__text">本节分享个人博客搭建中文章书写的方法和技巧</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/17/手把手搭建个人博客系列教程-三/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356054.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356060.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-五</a><div class="blog-slider__text">本节设置文章相关,侧边栏,footer,右下角按钮,404页面,特效,字体,本地搜索,显示模式,预加载动画,标签外挂等</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-五/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-六</a><div class="blog-slider__text">本节主要介绍如何借助PicGo搭建图床，如何实现Live2D,留言板,Valine评论区等功能板块</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/20/手把手搭建个人博客系列教程-六/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-24</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-七</a><div class="blog-slider__text">本节主要介绍如何实现魔改菜单栏,夜间霓虹灯,个人卡片渐变色,个人卡片发光,页面样式调节等</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/24/手把手搭建个人博客系列教程-七/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356052.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
