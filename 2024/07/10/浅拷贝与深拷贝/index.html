@@ -1,0 +1,494 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浅拷贝与深拷贝 | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="总结区分了浅拷贝和深拷贝的概念和特点，举例介绍了浅拷贝和深拷贝的使用方法.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅拷贝与深拷贝">
+<meta property="og:url" content="https://www.fjsi.top/2024/07/10/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="总结区分了浅拷贝和深拷贝的概念和特点，举例介绍了浅拷贝和深拷贝的使用方法.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fjsi.top/img/202405131356053.jpg">
+<meta property="article:published_time" content="2024-07-10T02:08:00.000Z">
+<meta property="article:modified_time" content="2024-07-12T14:34:05.138Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="拷贝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fjsi.top/img/202405131356053.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://www.fjsi.top/2024/07/10/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浅拷贝与深拷贝',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-12 22:34:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356053.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浅拷贝与深拷贝</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2024-07-12T14:34:05.138Z" title="更新于 2024-07-12 22:34:05">2024-07-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浅拷贝与深拷贝"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引语"><a href="#引语" class="headerlink" title="引语"></a>引语</h2><p>在 “值传递和引用传递” 这篇文章中我们提到了直接使用引用传递在方法中修改所指向对象的内容时实际是在修改实参，当我们想要复制对象进行修改而不影响原始对象时，我们就应根据实际需求选择浅拷贝或深拷贝。</p>
+<p>深拷贝是指不仅复制对象本身，还递归复制对象中的所有引用类型成员变量所指向的对象，从而创建一个全新的、独立的对象。这样可以确保原始对象和克隆对象完全独立，对其中一个对象的修改不会影响到另一个对象。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>理解拷贝的概念前我们先做一个判断：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MyClass</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line">MyClass b;</span><br><span class="line">b = a;</span><br></pre></td></tr></table></figure>
+<p>这种方式中<code>b</code>是不是<code>a</code>的拷贝？<br>答案：否，<code>b</code>其实是指向<code>a</code>的一个引用，两个都对应内存中的同一个位置，因此修改<code>b</code>的值也会改动<code>a</code>的值。<br>在Java中拷贝对象(也称为克隆对象)有两种方式：浅拷贝和深拷贝。<br>拷贝要求拷贝出来的对象与原对象是独立的，浅拷贝和深拷贝与原对象都是独立的，区别仅在于：</p>
+<ul>
+<li>浅拷贝：只复制对象本身和基本数据类型成员变量，而不复制对象中引用类型的成员变量所指向的对象。</li>
+<li>深拷贝：不仅复制对象本身和基本数据类型成员变量，还递归复制对象中引用类型的成员变量所指向的对象。</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>浅拷贝：只复制对象本身和基本数据类型成员变量，不复制对象中引用类型成员变量所指向的对象，修改克隆对象的基本数据类型成员变量不改变原对象，而克隆对象和原对象的引用类型成员变量所指向的对象是相同的。</li>
+<li>深拷贝：不仅复制对象本身和基本数据类型成员变量，还递归复制对象中引用类型的成员变量所指向的对象，从而产生一个全新的独立于原对象的新对象。在新对象上做的所有修改都与原对象独立。</li>
+</ul>
+<p>浅拷贝与深拷贝的主要区别只在对引用数据类型成员变量的处理上。<br>形象一点理解就是：</p>
+<ul>
+<li>浅拷贝只复制对象的当前层，引用类型成员变量所指向的对象就属于更深一层的内容了，因此在浅拷贝中不复制此内容</li>
+<li>深拷贝中会用递归的方式将所指向的对象也进行复制，从而产生完全一样完全独立的新对象。</li>
+</ul>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>要完成浅拷贝，需要实现下面两个要求：</p>
+<ol>
+<li>让自定义类实现<code>Cloneable</code>接口。</li>
+<li>重写<code>.clone()</code>方法，返回值为<code>Object</code>类型。</li>
+<li><code>.clone()</code>方法捕获或抛出<code>CloneNotSupportedException</code>异常<br>下面是使用例子：</li>
+<li>示例1：在<code>.clone()</code>方法中捕获处理异常。<figure class="highlight java"><figcaption><span>浅拷贝示例1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class1</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class2 next;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1)<span class="built_in">super</span>.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>示例2：在<code>.clone()</code>方法抛出异常，在使用处捕获处理异常。<figure class="highlight java"><figcaption><span>浅拷贝示例2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class1</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span> <span class="keyword">throws</span> CloneNotSupportedException&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class2 next;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (Class1)<span class="built_in">super</span>.clone();</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 使用.clone()时用try-catch捕获并处理异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>深拷贝相比浅拷贝多了一个手动完成引用类型成员变量的克隆操作。<br>如果想给对象提供浅拷贝和深拷贝两种方式，就需要单独书写一个深拷贝方法，示例：</p>
+<figure class="highlight java"><figcaption><span>深拷贝示例1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class1</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class2 next;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123; <span class="comment">// 浅拷贝方式通过`.clone()`方式调用</span></span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1) <span class="built_in">super</span>.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 自定义方法省略</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class1 <span class="title function_">deepClone</span><span class="params">()</span> &#123; <span class="comment">// 深拷贝方式通过`.deepClone()`方式调用</span></span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1)<span class="built_in">super</span>.clone();</span><br><span class="line">			cloned.next = (Class2)next.clone(); <span class="comment">// 深拷贝需要手动完成引用类型成员变量的递归复制</span></span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有时候我们针对一个对象只需要深拷贝这一种拷贝方法，那么就可以直接在.clone()方法中实现深拷贝，示例：</p>
+<figure class="highlight java"><figcaption><span>深拷贝示例2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class1</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class2 next; <span class="comment">// Class2也要实现Cloneable接口，并重写.clone()方法</span></span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123; <span class="comment">// 深拷贝通过`.clone()`方式调用</span></span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1)<span class="built_in">super</span>.clone();</span><br><span class="line">			cloned.next = (Class2)next.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 自定义方法省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两种深拷贝方式都是可以的，根据场景选择适合的。上面介绍的深拷贝都是通过克隆实现的，即实现<code>Cloneable</code>接口，还有一种方式是通过序列化和反序列化来完成深拷贝，需要实现&#96;&#96;接口</p>
+<div class="note info flat"><p>注意：要实现深拷贝，引用类型成员变量的这个类(例如前文代码中的Class2)也要实现<code>Cloneable</code>接口，并重写<code>.clone()</code>方法。</p>
+</div>
+
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>有的场景下类中含有多个引用类型，或者引用类型内层还包含很多引用类型，那这种场景下如果还是用<code>Cloneable</code>接口的<code>.clone()</code>方式来书写就会特别麻烦，这时候可以考虑使用序列化来完成深度拷贝。<br>序列化(Serialization)就是将对象写到流的过程，写入完成后流中的对象是原有对象的一份拷贝，原对象仍然存在内存中，两者相互独立。对象序列化时不仅复制对象本身，还递归复制其引用的成员对象，因此通过序列化和反序列化过程就可以实现深拷贝。要完成深拷贝有下面的要求：</p>
+<ol>
+<li>要实现序列化的对象类必须实现 <code>Serializable</code> 接口。</li>
+<li>要实现序列化的对象中要复制的成员变量的对象类必须实现 <code>Serializable</code> 接口。</li>
+<li>在深拷贝方法中包含对象的序列化和反序列化</li>
+</ol>
+<p>具体实现示例：</p>
+<figure class="highlight java"><figcaption><span>序列化深拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义类 要实现序列化的对象中要复制的成员变量的对象类也必须实现`Serializable`接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class4</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="comment">// setter 和 getter 方法省略</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自定义类 要实现序列化的对象类必须实现`Serializable`接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class3</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class4 next; <span class="comment">// 引用类型成员变量</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class3 <span class="title function_">deepClone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class3</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123; <span class="comment">// 在深拷贝方法中捕获并处理异常</span></span><br><span class="line">			<span class="comment">// 序列化</span></span><br><span class="line">			<span class="type">ByteArrayOutputStream</span> <span class="variable">baos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">			<span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(baos);</span><br><span class="line">			oos.writeObject(<span class="built_in">this</span>); </span><br><span class="line">			<span class="comment">// 反序列化</span></span><br><span class="line">			<span class="type">ByteArrayInputStream</span> <span class="variable">bais</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(baos.toByteArray());</span><br><span class="line">			<span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(bais);</span><br><span class="line">			cloned = (Class3)ois.readObject();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 自定义 setter 和 getter 方法省略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>采用序列化实现的深拷贝与实现<code>Cloneable</code>接口的深拷贝有什么区别？<br>通过序列化和反序列化实现的深拷贝相比另一种深拷贝，多了“泛型限定”这一优势，编译器会在运行前检查待克隆的对象是否支持序列化，从而避免在运行时抛出异常。</p>
+<div class="note info flat"><p>tips: 当你想要让类中的某个成员变量不被深拷贝，也就是说不被序列化和反序列化，那就用<code>transient</code>关键字修饰该成员变量，或者将此成员变量加<code>static</code>修饰变为静态变量，因为静态变量归属于类，不会进入对象的序列化和反序列化过程。</p>
+</div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>浅拷贝和深拷贝都可通过实现<code>Cloneable</code>接口，并重写<code>.clone()</code>来定义，两者区别在于深拷贝的引用成员变量的复制要手动完成。</li>
+<li>深拷贝还可通过对象的序列化和反序列化来实现，相应的需要被拷贝的对象实现<code>Serializable</code>接口。</li>
+<li>通过对象的序列化和反序列化实现的深拷贝能更好处理“引用嵌套，多个引用”这种情况，同时具备“泛型限定”的优势，在实现深拷贝时应优先采用这种方式。</li>
+</ol>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>贴上完整测试代码：</p>
+<figure class="highlight java"><figcaption><span>完整测试代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class2</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class2</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class2)<span class="built_in">super</span>.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String str)</span> &#123;</span><br><span class="line">		name = str;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class1</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class2 next;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1) <span class="built_in">super</span>.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 自定义方法</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setData</span><span class="params">(Integer value)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.data = value;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNext</span><span class="params">(Class2 myclass)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.next = myclass;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class2 <span class="title function_">getNext</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (Class2) <span class="built_in">this</span>.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;data = &quot;</span> + data);</span><br><span class="line">		System.out.println(<span class="string">&quot;next address = &quot;</span> + next);</span><br><span class="line">		System.out.println(<span class="string">&quot;next value = &quot;</span> + next.getName());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class1 <span class="title function_">deepClone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			cloned = (Class1)<span class="built_in">super</span>.clone();</span><br><span class="line">			cloned.next = (Class2)next.clone();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class4</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// setter 和 getter 方法</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String str)</span> &#123;</span><br><span class="line">		name = str;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Class3</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer data;</span><br><span class="line">	<span class="keyword">private</span> Class4 next;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class3 <span class="title function_">deepClone</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Class3</span> <span class="variable">cloned</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 序列化</span></span><br><span class="line">			<span class="type">ByteArrayOutputStream</span> <span class="variable">baos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">			<span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(baos);</span><br><span class="line">			oos.writeObject(<span class="built_in">this</span>); </span><br><span class="line">			<span class="comment">// 反序列化</span></span><br><span class="line">			<span class="type">ByteArrayInputStream</span> <span class="variable">bais</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(baos.toByteArray());</span><br><span class="line">			<span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(bais);</span><br><span class="line">			cloned = (Class3)ois.readObject();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cloned;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 自定义方法 setter和getter</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setData</span><span class="params">(Integer value)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.data = value;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNext</span><span class="params">(Class4 myclass)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.next = myclass;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Class4 <span class="title function_">getNext</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (Class4) <span class="built_in">this</span>.next;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;data = &quot;</span> + data);</span><br><span class="line">		System.out.println(<span class="string">&quot;next address = &quot;</span> + next);</span><br><span class="line">		System.out.println(<span class="string">&quot;next value = &quot;</span> + next.getName());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CopyMethod</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">(Class1 origin, Class1 cloned)</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Origin: &quot;</span>);</span><br><span class="line">		origin.display(); <span class="comment">// 1, address1</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Cloned: &quot;</span>);</span><br><span class="line">		cloned.display(); <span class="comment">// 1, address1</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">&quot;--- Cloneable after change --- &quot;</span>);</span><br><span class="line">		</span><br><span class="line">		cloned.setData(<span class="number">2</span>); <span class="comment">// set clone.data = 2</span></span><br><span class="line">		cloned.getNext().setName(<span class="string">&quot;XiaoMing&quot;</span>); <span class="comment">// set clone.next.name = XiaoMing</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Origin: &quot;</span>);</span><br><span class="line">		origin.display(); <span class="comment">// 1, address1, origin.next.name = XiaoMing 可见next.data已经被修改了</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Cloned: &quot;</span>);</span><br><span class="line">		cloned.display(); <span class="comment">// 2, address1, cloned.next.name = XiaoMing 	</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">(Class3 origin, Class3 cloned)</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Origin: &quot;</span>);</span><br><span class="line">		origin.display(); <span class="comment">// 1, address1</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Cloned: &quot;</span>);</span><br><span class="line">		cloned.display(); <span class="comment">// 1, address1</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">&quot;--- after change --- &quot;</span>);</span><br><span class="line">		</span><br><span class="line">		cloned.setData(<span class="number">2</span>); <span class="comment">// set clone.data = 2</span></span><br><span class="line">		cloned.getNext().setName(<span class="string">&quot;XiaoMing&quot;</span>); <span class="comment">// set clone.next.name = XiaoMing</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Origin: &quot;</span>);</span><br><span class="line">		origin.display(); <span class="comment">// 1, address1, origin.next.name = XiaoMing 可见next.data已经被修改了</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Cloned: &quot;</span>);</span><br><span class="line">		cloned.display(); <span class="comment">// 2, address1, cloned.next.name = XiaoMing 		</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">origin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Class1</span>(); <span class="comment">// origin</span></span><br><span class="line">		origin.setData(<span class="number">1</span>); <span class="comment">// set origin.data = 1</span></span><br><span class="line">		<span class="type">Class2</span> <span class="variable">next</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Class2</span>(); <span class="comment">// next</span></span><br><span class="line">		next.setName(<span class="string">&quot;LiHua&quot;</span>);</span><br><span class="line">		origin.setNext(next); <span class="comment">// origin.next.name = LiHua</span></span><br><span class="line">			</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">shallowCloned</span> <span class="operator">=</span> (Class1) origin.clone(); <span class="comment">// 浅拷贝对象</span></span><br><span class="line">		System.out.println(<span class="string">&quot;\n===== Shallow copy Test =====\n&quot;</span>);</span><br><span class="line">		test1(origin, shallowCloned);</span><br><span class="line">		</span><br><span class="line">		origin.getNext().setName(<span class="string">&quot;LiHua&quot;</span>); <span class="comment">// 还原origin的值</span></span><br><span class="line">		</span><br><span class="line">		<span class="type">Class1</span> <span class="variable">deepCloned</span> <span class="operator">=</span> (Class1) origin.deepClone();</span><br><span class="line">		System.out.println(<span class="string">&quot;\n=====Cloneable Deep copy Test =====\n&quot;</span>);</span><br><span class="line">		test1(origin, deepCloned);</span><br><span class="line">		</span><br><span class="line">		<span class="type">Class3</span> <span class="variable">origin2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Class3</span>();</span><br><span class="line">		origin2.setData(<span class="number">1</span>);</span><br><span class="line">		<span class="type">Class4</span> <span class="variable">next2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Class4</span>(); <span class="comment">// next</span></span><br><span class="line">		next2.setName(<span class="string">&quot;LiHua&quot;</span>);</span><br><span class="line">		origin2.setNext(next2); <span class="comment">// origin.next.name = LiHua</span></span><br><span class="line">		<span class="type">Class3</span> <span class="variable">deepCloned2</span> <span class="operator">=</span> (Class3)origin2.deepClone();</span><br><span class="line">		System.out.println(<span class="string">&quot;\n=====Serializable Deep copy Test =====\n&quot;</span>);</span><br><span class="line">		test2(origin2, deepCloned2);</span><br><span class="line">		</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2024/07/10/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/">https://www.fjsi.top/2024/07/10/浅拷贝与深拷贝/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8B%B7%E8%B4%9D/">拷贝</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356053.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/07/09/%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" title="值传递和引用传递"><img class="cover" src="/img/202405131356058.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">值传递和引用传递</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text">引语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">4.</span> <span class="toc-text">浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">5.</span> <span class="toc-text">深拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text">附录</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/AirScript教程/&quot;);" href="javascript:void(0);">AirScript教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Markdown-教程/&quot;);" href="javascript:void(0);">Markdown 教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Photoshop教程/&quot;);" href="javascript:void(0);">Photoshop教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Java/&quot;);" href="javascript:void(0);">Java</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构与算法/&quot;);" href="javascript:void(0);">数据结构与算法</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356056.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356055.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356598.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">AirScript教程</a><div class="blog-slider__text">AirScript简单教程，了解AirScript工具基本使用方法和开发过程.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">复杂度计算</a><div class="blog-slider__text">时间复杂度、空间复杂度的计算，对数器、比较器的使用.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
