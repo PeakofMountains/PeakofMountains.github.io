@@ -1,0 +1,554 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RESTfulAPI | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="RESTful API相关概念的介绍，RESTful API规范的相关介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RESTfulAPI">
+<meta property="og:url" content="https://www.fjsi.top/2024/09/21/RESTfulAPI/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="RESTful API相关概念的介绍，RESTful API规范的相关介绍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fjsi.top/img/202405131356060.jpg">
+<meta property="article:published_time" content="2024-09-21T15:18:13.000Z">
+<meta property="article:modified_time" content="2024-09-21T15:22:30.877Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="RESTfulAPI">
+<meta property="article:tag" content="规范">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fjsi.top/img/202405131356060.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://www.fjsi.top/2024/09/21/RESTfulAPI/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RESTfulAPI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-21 23:22:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356060.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RESTfulAPI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2024-09-21T15:22:30.877Z" title="更新于 2024-09-21 23:22:30">2024-09-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RESTfulAPI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="RESTfulAPI概念"><a href="#RESTfulAPI概念" class="headerlink" title="RESTfulAPI概念"></a>RESTfulAPI概念</h2><p><em><strong>Q:什么是RESTfulAPI?</strong></em><br>REST一种互联网软件架构原则，如果一个架构符合REST原则，就称为RESTful架构。<br>REST全称Representational State Transfer，表现层状态转换，这样理解有点抽象，可以从RESTful架构的三个特征来理解。<br>RESTful三个特征：</p>
+<ul>
+<li>一个URI代表一种资源。</li>
+<li>客户端服务器之间传递这个资源的表现层。</li>
+<li>客户端通过四个HTTP动词对服务端的资源进行操作，实现“表现层状态转换”。</li>
+</ul>
+<p><em><strong>Q:URI是什么?</strong></em><br>我们上网的过程实际上是将资源互相传递的过程，这个资源可以是文本、音频、视频、图片等各种实体。一个URI（统一资源定位符）唯一标识一个资源，因此访问URI就可以访问到这个资源。</p>
+<p><em><strong>Q:表现层是什么?</strong></em><br>我们上网时通过调用资源的URI实现与资源的交互，资源是实体，表现层是资源实体呈现出来的具体形式，例如文本是个实体，txt文件就是其表现层，当然html、xml也是它的表现层。<br>URI代表资源实体，因此一些网址中的<code>.html</code>后缀是不必要的，因为<code>.html</code>代表此资源的表现层，不属于URI的范畴，表现层应写在HTTP头信息的Accept和Content-type字段，这两个字段是用来描述表现层的。</p>
+<p><em><strong>Q:状态变化指的是什么?</strong></em><br>上网过程中客户端与服务端的互动势必涉及到资源数据和状态的变化，而这个过程是通过HTTP协议进行的，HTTP协议是无状态协议，意味着所有的状态都保存在服务端，如果客户端想要修改资源，只能通过让服务端发生“状态变化”来完成，而这个转化是建立在表现层上的，因此就是“表现层状态变化”。</p>
+<p><em><strong>Q:四个HTTP动词指的是什么?如何对服务端资源做操作?</strong></em><br>四个表示操作方式的动词分别是：GET、POST、PUT、DELETE，对应对资源的操作：创建、编辑、请求、删除。<br>简单理解就是：</p>
+<ul>
+<li>GET：请求获取URI所标识的资源。</li>
+<li>POST：用来新建资源（也可以用来更新资源），用URI作为标识。</li>
+<li>PUT：请求服务器存储一个资源，并用URI作为其标识（与POST的区别可以理解为追加修改）。</li>
+<li>DELETE：请求服务器删除URI所标识的资源。</li>
+</ul>
+<p><em><strong>Q:为什么建议使用POST替代GET？</strong></em><br>常使用POST替代GET的原因主要包括数据传输量、安全性、隐私保护、CSRF攻击防护、数据格式多样性、以及特定操作的需求。</p>
+<ul>
+<li>传输量：GET只能将参数作为URL的一部分传入，而URL有长度限制，POST通过HTTP消息体传递，能包含更多参数。</li>
+<li>安全性：GET将参数作为URL一部分暴露在外，容易被非法获取，特别是有些参数包含敏感信息，而POST通过HTTP消息体传递参数，参数不容易被直接观察到。</li>
+<li>保密性：GET会将参数在URL中暴露在外，如果参数涉及隐私同样会暴露。</li>
+<li>数据格式多样性：POST请求可以使用多种数据格式（例如表单、JSON、XML等）传递数据。</li>
+</ul>
+<h3 id="RESTfulAPI接口规范"><a href="#RESTfulAPI接口规范" class="headerlink" title="RESTfulAPI接口规范"></a>RESTfulAPI接口规范</h3><p>首先要明确一点，规范是为了更好地协作而指定的一套规则，团队里开发人员都遵循规范那就能提高工作效率，但是不遵循规范并不是错误的，请尊重他人的选择。</p>
+<p>进入正题，RESTful是按照HTTP的思想进行设计的，RESTful API在请求方法、资源、地址都进行了规范，其最大限度的利用了HTTP最初的应用协议的设计理念，所以有必要知道HTTP的结构是什么样子。<br>http链接是很常见的，一般都具有下面的结构：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema://host[:port]/path[?query-string][#author]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shceme</td>
+<td>指定低层使用的协议（如http,https,ftp）</td>
+</tr>
+<tr>
+<td>host</td>
+<td>服务器的IP地址或域名</td>
+</tr>
+<tr>
+<td>port</td>
+<td>服务器端口，可省略，默认为80</td>
+</tr>
+<tr>
+<td>path</td>
+<td>访问资源的路径</td>
+</tr>
+<tr>
+<td>query-string</td>
+<td>发送给http服务器的数据，常用于对资源进行筛选操作</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚，链接</td>
+</tr>
+</tbody></table>
+<h3 id="URI规范"><a href="#URI规范" class="headerlink" title="URI规范"></a>URI规范</h3><ul>
+<li>不用大写；</li>
+<li>用中杠<code>-</code>不用下杠<code>_</code>；</li>
+<li>URI中的名词表示资源集合时，使用复数形式。</li>
+</ul>
+<p>上文中提到的path即URI，URI唯一标识资源实体，所以应该是名词，不应该有动词，动词含义应该放在HTTP协议中用四个HTTP动作（GET,POST,PUT,DELETE）来代替，如果某些动作是HTTP动词表示不了的，你就应该把动作做成一种资源，用动作的名词形式代替表示一种服务。<br>例如从账户A转账10000元给账户B：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 错误URI写法 */</span><br><span class="line">POST</span><br><span class="line">/accounts/A/transfer/10000/to/B</span><br><span class="line">/* 正确URI写法 */</span><br><span class="line">使用POST方式</span><br><span class="line">URI写作`/transaction`</span><br><span class="line">动作包含的数字通过参数的方式传入`/from=A&amp;to=B&amp;amount=10000.00`</span><br></pre></td></tr></table></figure>
+
+<h2 id="RESTfulAPI规范"><a href="#RESTfulAPI规范" class="headerlink" title="RESTfulAPI规范"></a>RESTfulAPI规范</h2><p>设计RESTful API需要考虑以下几个方面：</p>
+<ol>
+<li><p>资源路径<br>资源路径（URI）：RESTful的核心是面向资源，如何规划资源路径很重要，这个资源路径与实际资源的路径没有关系，可以理解为一个服务的地址，或者接口暴露给调用方的服务访问地址。<br>针对不同操作（如GET,POST），服务器向用户返回的结果应该符合以下规范：</p>
+<ul>
+<li>GET&#x2F;collections: 返回资源对象的列表（数组）</li>
+<li>GET&#x2F;collections&#x2F;identity : 读取资源时，传入标识符(identity),服务端返回标识符指定的单个资源对象</li>
+<li>POST&#x2F;collections : 返回新生成的资源对象</li>
+<li>PUT&#x2F;collections&#x2F;identity : 返回完整的资源对象</li>
+<li>PATCH&#x2F;collections&#x2F;identity : 返回被修改的属性</li>
+<li>DELETE&#x2F;collections&#x2F;identity : 返回一个204状态码和空响应体</li>
+</ul>
+</li>
+<li><p>HTTP动词<br>HTTP动词的选择其实是选择请求方式：如GET,POST,DELETE,PUT，根据服务所属的动作来选择，同时建议使用POST代替GET，特别是对安全性方面有要求或者传入参数格式比较特别。  </p>
+<ul>
+<li>GET ： 从服务器去除资源</li>
+<li>POST ：在服务器新建一个资源</li>
+<li>PUT：在服务器更新资源（客户端提供改变后的完整资源，服务端返回完整的更新字段）</li>
+<li>PATCH：在服务器更新资源（客户端提供改变的属性，服务端返回只发生了更新的字段）</li>
+<li>DELETE：从服务器删除资源</li>
+</ul>
+</li>
+<li><p>过滤信息<br>如果记录数量过多，服务器不可能都将它们返回给用户。这时就需要进行筛选。筛选时，API应该提供一个参数，过滤一下返回的结果。<br><code>?offset = 10</code> :指定返回记录的开始位置<br><code>?page = 2&amp;per_page = 100</code> :指定第几页，以及每页的记录数<br><code>?sortby = name&amp;order = asc</code> :指定返回结果排序，以及排序顺序<br><code>?animal_type_id = 1</code> :指定筛选条件</p>
+</li>
+<li><p>返回体<br>服务的响应返回内容应该包装成一个返回体，同时此返回体不仅要包含服务返回的数据内容，还应包含服务的状态码和错误处理。  </p>
+<ul>
+<li>状态码：当客户端发送一个请求时，服务端应当响应什么状态码，例如 <code>404</code>。<br> 常用响应状态码（在RESTful 中有重要应用）:  </li>
+<li>200 OK 服务器成功返回用户请求的数据</li>
+<li>201 CREATED 新建或修改数据成功</li>
+<li>204 NO CONTENT 删除数据成功</li>
+<li>400 BAD REQUEST 用户发出的请求有错误</li>
+<li>401 Unauthorized 表示用户没有认证，无法进行当前操作</li>
+<li>403 Forbidden 表示用户的访问是被禁止的</li>
+<li>422 Unprocesable Entity 当创建一个对象时，发生一个验证错误。例如创建用户资源时需要用户名、密码，而前端只提供用户名字段，那么 就要返回一个422 状态码，并返回错误信息：”密码不能为空“</li>
+<li>500 INTERNAL SERVER ERROR 服务器内部错误，此时服务端无法处理任何请求。<br>例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ResponseEnum</span> &#123;</span><br><span class="line">    SUCCESS(<span class="number">200</span>, <span class="string">&quot;服务器成功处理了请求!&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    CREATE_SUCCESS(<span class="number">201</span>, <span class="string">&quot;请求成功并因此创建了一个新资源。&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    UPDATE_SUCCESS(<span class="number">202</span>, <span class="string">&quot;请求成功并因此更新了一个资源。&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    NO_CONTENT_SUCCESS(<span class="number">204</span>, <span class="string">&quot;服务器成功处理了请求，但没有返回任何内容。&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    ERROR(<span class="number">402</span>, <span class="string">&quot;操作失败！&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    INVALID_ARGUMENT_ERROR(<span class="number">400</span>, <span class="string">&quot;客户端请求有语法错误，请检查参数格式!&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    UNAUTHORIZED_ERROR(<span class="number">401</span>, <span class="string">&quot;权限不足，请检查访问权限！&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    NOT_FOUND_ERROR(<span class="number">404</span> ,<span class="string">&quot;请求资源不存在&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    INNER_ERROR(<span class="number">500</span>, <span class="string">&quot;服务器内部发生错误！&quot;</span>),</span><br><span class="line">    </span><br><span class="line">    SERVER_UNAVAILABLE_ERROR(<span class="number">503</span>, <span class="string">&quot;服务器当前不能处理客户端的请求！&quot;</span>)</span><br><span class="line">    ;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    ResponseEnum(<span class="type">int</span> code, String msg) &#123;</span><br><span class="line">        <span class="built_in">this</span>.code = code;</span><br><span class="line">        <span class="built_in">this</span>.message = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMsg</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+如果状态码是4xx或5xx,就应该向用户返回出错信息。一般而言，返回的信息中将error作为键名，出错信息作为键值即可</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>错误处理：如当发现客户端传入的参数有问题时，该返回什么样的状态信息。<br>例如操作成功返回<code>status:&quot;success&quot;</code>,操作失败返回<code>status:&quot;failure&quot;</code>，同时报错信息也应该有，例如：<code>error_info:index out of range</code>。</p>
+</li>
+<li><p>返回结果：如果服务有返回结果要传给客户端，返回体中就要包含返回结果<br>一个返回体的例子：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;success&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">200</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;服务器成功处理了请求!&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;error_message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;fjsi&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;fjsi@fjsi.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">18</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>博主根据自己理解的RESTful API书写了一个简单项目，仅供参考：<a target="_blank" rel="noopener" href="https://gitee.com/peakofmountains/springboot-learn">RESTful API示例</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2024/09/21/RESTfulAPI/">https://www.fjsi.top/2024/09/21/RESTfulAPI/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RESTfulAPI/">RESTfulAPI</a><a class="post-meta__tags" href="/tags/%E8%A7%84%E8%8C%83/">规范</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356060.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/03/SQL%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" title="SQL入门教程"><img class="cover" src="/img/202405131356598.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SQL入门教程</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/24/docker%E6%95%99%E7%A8%8B/" title="docker教程"><img class="cover" src="/img/202405131356058.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">docker教程</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RESTfulAPI%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">RESTfulAPI概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTfulAPI%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.</span> <span class="toc-text">RESTfulAPI接口规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URI%E8%A7%84%E8%8C%83"><span class="toc-number">1.2.</span> <span class="toc-text">URI规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RESTfulAPI%E8%A7%84%E8%8C%83"><span class="toc-number">2.</span> <span class="toc-text">RESTfulAPI规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">相关链接</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/AirScript教程/&quot;);" href="javascript:void(0);">AirScript教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/教程/&quot;);" href="javascript:void(0);">教程</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/工具使用笔记/&quot;);" href="javascript:void(0);">工具使用笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Markdown-教程/&quot;);" href="javascript:void(0);">Markdown 教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Java/&quot;);" href="javascript:void(0);">Java</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构与算法/&quot;);" href="javascript:void(0);">数据结构与算法</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356598.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356055.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356055.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">AirScript教程</a><div class="blog-slider__text">AirScript简单教程，了解AirScript工具基本使用方法和开发过程.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356054.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">复杂度计算</a><div class="blog-slider__text">时间复杂度、空间复杂度的计算，对数器、比较器的使用.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
