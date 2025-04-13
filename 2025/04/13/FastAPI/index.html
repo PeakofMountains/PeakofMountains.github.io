@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FastAPI | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="官方文档 https:&#x2F;&#x2F;fastapi.tiangolo.com&#x2F;#requirements 参考教程 https:&#x2F;&#x2F;www.runoob.com&#x2F;fastapi&#x2F;fastapi-tutorial.html 在阅读这篇文章前建议先了解RESTful API相关概念，可查看本站的“RESTfulAPI”这篇文章。 FastAPI是什么？是一种在Python语言中实现RESTfulAPI设计的AP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FastAPI">
+<meta property="og:url" content="https://www.fjsi.top/2025/04/13/FastAPI/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="官方文档 https:&#x2F;&#x2F;fastapi.tiangolo.com&#x2F;#requirements 参考教程 https:&#x2F;&#x2F;www.runoob.com&#x2F;fastapi&#x2F;fastapi-tutorial.html 在阅读这篇文章前建议先了解RESTful API相关概念，可查看本站的“RESTfulAPI”这篇文章。 FastAPI是什么？是一种在Python语言中实现RESTfulAPI设计的AP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fjsi.top/img/202405131356058.jpg">
+<meta property="article:published_time" content="2025-04-13T14:04:15.000Z">
+<meta property="article:modified_time" content="2025-04-13T14:04:15.400Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fjsi.top/img/202405131356058.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://www.fjsi.top/2025/04/13/FastAPI/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FastAPI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-13 22:04:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356058.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FastAPI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2025-04-13T14:04:15.400Z" title="更新于 2025-04-13 22:04:15">2025-04-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FastAPI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://fastapi.tiangolo.com/#requirements">官方文档 https://fastapi.tiangolo.com/#requirements</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/fastapi/fastapi-tutorial.html">参考教程 https://www.runoob.com/fastapi/fastapi-tutorial.html</a></p>
+<p>在阅读这篇文章前建议先了解RESTful API相关概念，可查看本站的<a href="https://www.fjsi.top/2024/09/21/RESTfulAPI/">“RESTfulAPI”</a>这篇文章。</p>
+<h2 id="FastAPI是什么？"><a href="#FastAPI是什么？" class="headerlink" title="FastAPI是什么？"></a>FastAPI是什么？</h2><p>是一种在Python语言中实现RESTfulAPI设计的API构建方式。<br>不想写API文档？它能自动生成API文档。<br>要实现IO比较频繁的场景？它支持异步编程，处理IO密集小能手。<br>对参数验证不厌其烦？它提供基于Python的输入验证和代码提示<br>担心它的稳定性？它能在生产环境中使用。</p>
+<h2 id="FastAPI能做什么？"><a href="#FastAPI能做什么？" class="headerlink" title="FastAPI能做什么？"></a>FastAPI能做什么？</h2><p>FastAPI的特点决定了它的应用场景：</p>
+<ul>
+<li>构建API后端：用于在Python中构建RESTful API，前后端分离的Web应用，俗称写接口</li>
+<li>微服务架构：可作为微服务的后端框架，支持快速开发和部署</li>
+<li>数据处理API：适用于处理数据，接受和返回JSON数据</li>
+<li>实时通信：支持WebSocket，可用作实时通信</li>
+</ul>
+<h2 id="FastAPI要什么？"><a href="#FastAPI要什么？" class="headerlink" title="FastAPI要什么？"></a>FastAPI要什么？</h2><ol>
+<li>FastAPI依赖Python3.8及更高版本</li>
+<li>使用FastAPI需要先安装fastapi包，使用pip命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install fastapi</span><br></pre></td></tr></table></figure></li>
+<li>需要一个ASGI服务器，生产环境可以使用 Uvicorn 或者 Hypercorn。<br>推荐FastAPI搭配Uvicorn，轻量支持异步并行，高效处理高并发，可以使用命令安装：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &quot;uvicorn[standard]&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="必不可少的HelloWorld"><a href="#必不可少的HelloWorld" class="headerlink" title="必不可少的HelloWorld"></a>必不可少的HelloWorld</h2><p>创建一个main.py文件，写入下面内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建FastAPI应用实例</span></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根路由，返回简单响应</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;Hello&quot;</span>: <span class="string">&quot;World&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>在命令行使用命令启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uvicorn main:app</span><br></pre></td></tr></table></figure>
+<p>如果你是在开发环境，建议加上<code>--reload</code>参数：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uvicorn main:app --reload</span><br></pre></td></tr></table></figure>
+<p><code>--reload</code>参数能帮你在修改代码并保存后自动重启服务。<br><strong>要记住，在生产环境不要加–reload参数</strong><br><code>main</code>参数对应文件名main.py。<br><code>app</code>参数对应代码中的<code>app=FastAPI()</code>这句生成的FastAPI对象。<br>本地启动的话默认服务在<code>http://127.0.0.1:8000/</code>,浏览器即可访问，得到返回结果<code>&#123;&quot;Hello&quot;:&quot;World&quot;&#125;</code><br>我们定义的处理函数<code>read_root()</code>返回一个字典，该字典将被 FastAPI 自动转换为 JSON 格式，并作为响应发送给客户端</p>
+<h2 id="复杂一点，带路径参数的"><a href="#复杂一点，带路径参数的" class="headerlink" title="复杂一点，带路径参数的"></a>复杂一点，带路径参数的</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/name/&#123;my_name&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_name</span>(<span class="params">my_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;my_name&quot;</span>: my_name&#125;</span><br></pre></td></tr></table></figure>
+<p>一般我们习惯于在参数前加上表示资源的uri前缀用于区分不同的服务，就像这里的<code>name</code><br><code>&#123;my_name&#125;</code>为路径参数，方法的参数名要与路径参数保持一致才能读到<br><em>例子：</em><br>请求url： <code>http://127.0.0.1:8000/name/fjsi</code><br>响应体: <code>&#123;&quot;my_name&quot;:&quot;fjsi&quot;&#125;</code></p>
+<h2 id="丰富一点，参数类型加限制"><a href="#丰富一点，参数类型加限制" class="headerlink" title="丰富一点，参数类型加限制"></a>丰富一点，参数类型加限制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Union</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&#123;item_id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">item_id: <span class="built_in">int</span>, item_name: <span class="type">Union</span>[<span class="built_in">str</span>, <span class="literal">None</span>] = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># item_id: 路径参数(整数)</span></span><br><span class="line">    <span class="comment"># item_name: 可选查询参数(字符串或None),不传就默认None</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;item_id&quot;</span>: item_id, <span class="string">&quot;item_name&quot;</span>: item_name&#125;</span><br></pre></td></tr></table></figure>
+<p><em>例子：</em><br>请求url： <code>http://127.0.0.1:8000/items/1?item_name=fjsi</code><br>响应体： <code>&#123;&quot;item_id&quot;:1,&quot;item_name&quot;:&quot;fjsi&quot;&#125;</code></p>
+<p><code>item_id: int</code>这种形式前面<code>item_id</code>是变量名与路径参数对应，<code>int</code>是固定的数据类型，fastapi会根据此规定对参数进行校验。<br><code>item_name: Union[str, None] = None</code>表示<code>item_name</code>参数类型可为<code>str</code>或<code>None</code>，<code>=None</code>表示默认值为None，这样就实现了可选参数item_name。</p>
+<h2 id="想要发请求体"><a href="#想要发请求体" class="headerlink" title="想要发请求体"></a>想要发请求体</h2><p>POST请求这种包含多个请求参数的使用请求体更好点，借助 Pydantic 来使用标准的 Python 类型声明请求体。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    age: <span class="built_in">int</span></span><br><span class="line">    blog: <span class="type">Union</span>[<span class="built_in">str</span>, <span class="literal">None</span>] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/student&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_student</span>(<span class="params">student: Student</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;name&quot;</span>: student.name, <span class="string">&quot;age&quot;</span>: student.age, <span class="string">&quot;blog&quot;</span>: student.blog&#125;</span><br></pre></td></tr></table></figure>
+<p>借助Postman发送POST请求，url：<code>http://127.0.0.1:8000/student</code><br>请求体：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;fjsi&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;blog&quot;</span><span class="punctuation">:</span><span class="string">&quot;https://www.fjsi.top&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>返回体：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;fjsi&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;blog&quot;</span><span class="punctuation">:</span><span class="string">&quot;https://www.fjsi.top&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>借助 Pydantic 来使用标准的 Python 类型声明方式不仅可用于定义请求体，还可用于定义返回体。<br>关于Pydantic模型，详细内容见下面的 <em><strong>FastAPI Pydantic 模型</strong></em> 部分</p>
+<h2 id="不仅要请求体还要返回体"><a href="#不仅要请求体还要返回体" class="headerlink" title="不仅要请求体还要返回体"></a>不仅要请求体还要返回体</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StudentVo</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    student_name: <span class="built_in">str</span></span><br><span class="line">    student_age: <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/student&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_student</span>(<span class="params">student: Student</span>):</span><br><span class="line">    <span class="keyword">return</span> StudentVo(student_name=student.name, student_age=student.age)</span><br></pre></td></tr></table></figure>
+<p>这里定义了返回体的类型，限制了参数名，参数数量和参数类型。</p>
+<h2 id="请求头和-Cookie"><a href="#请求头和-Cookie" class="headerlink" title="请求头和 Cookie"></a>请求头和 Cookie</h2><p>使用 Header 和 Cookie 类型注解获取请求头和 Cookie 数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> Header, Cookie</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/header-cookie/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">content_type: <span class="built_in">str</span> = Header(<span class="params"><span class="string">&quot;application/json&quot;</span></span>),user_agent: <span class="built_in">str</span> = Header(<span class="params"><span class="string">&quot;PostmanRuntime/7.43.3&quot;</span></span>), session_token: <span class="built_in">str</span> = Cookie(<span class="params"><span class="literal">None</span></span>)</span>):</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;Content-Type&quot;</span>: content_type,<span class="string">&quot;User-Agent&quot;</span>: user_agent, <span class="string">&quot;Session-Token&quot;</span>: session_token&#125;</span><br></pre></td></tr></table></figure>
+<p>首先要接收请求头和Cookie就需要引入Header和Cookie<br>以<code>content_type: str = Header(&quot;application/json&quot;)</code>为例，content_type是请求头的名字，格式按这个标准来，只要参数名字正确就能从Header中读入。<br>Header()中可填入默认值，如果请求头中不包含此参数就会使用默认值，默认值也可以为None，但是不建议不填，如果不填，请求头不包含相应参数时会报错。</p>
+<h2 id="重定向路由"><a href="#重定向路由" class="headerlink" title="重定向路由"></a>重定向路由</h2><p>使用 RedirectResponse 实现重定向，将客户端请求重定向。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> RedirectResponse</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/header-cookie/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">content_type: <span class="built_in">str</span> = Header(<span class="params"><span class="string">&quot;application/json&quot;</span></span>),user_agent: <span class="built_in">str</span> = Header(<span class="params"><span class="string">&quot;PostmanRuntime/7.43.3&quot;</span></span>), session_token: <span class="built_in">str</span> = Cookie(<span class="params"><span class="literal">None</span></span>)</span>):</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;Content-Type&quot;</span>: content_type,<span class="string">&quot;User-Agent&quot;</span>: user_agent, <span class="string">&quot;Session-Token&quot;</span>: session_token&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/redirect&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">redirect</span>():</span><br><span class="line">    <span class="keyword">return</span> RedirectResponse(url=<span class="string">&quot;/header-cookie/&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>访问<code>/redirect</code> uri就会转发到<code>header-cookie</code>上去，看上去好像有点多次一举，但其实在转发前可以在转发部分做很多预处理，例如在<code>/redirect/</code>中进行数据校验、数据预处理等，让<code>/header-cookie/</code>部分专心实现业务。</p>
+<h2 id="异常抛出和异常处理"><a href="#异常抛出和异常处理" class="headerlink" title="异常抛出和异常处理"></a>异常抛出和异常处理</h2><p>使用 HTTPException 在你认为合适的地方抛出异常给请求方，返回自定义的状态码和详细信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> HTTPException</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/exception/&#123;age&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">age: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="keyword">if</span> age &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">400</span>, detail=<span class="string">&quot;param &#x27;age&#x27; is out of range&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;age&quot;</span>: age&#125;</span><br></pre></td></tr></table></figure>
+<p>传入的age&gt;&#x3D;0时返回age，小于0时返回400报错，错误信息:<code>&#123;&quot;detail&quot;: &quot;param &#39;age&#39; is out of range&quot;&#125;</code></p>
+<h2 id="FastAPI-Pydantic-模型"><a href="#FastAPI-Pydantic-模型" class="headerlink" title="FastAPI Pydantic 模型"></a>FastAPI Pydantic 模型</h2><p>我的请求有多个参数时，我应该如何将这多个参数管理并做类型验证？<br>Pydantic 就是一个解决此问题的工具，Pydantic是一个用于数据验证和序列化的 Python 模型库<br>用于定义请求体、响应体和其他数据模型，提供了强大的类型检查和自动文档生成功能</p>
+<p><em><strong>FastAPI 将自动验证传入的 JSON 数据是否符合模型的定义，并将其转换为 Item 类型的实例，这意味着你可以直接在方法中使用item.name的方式访问传入的name值，这个使用Pydantic模型来做数据验证和映射的方式有点类似java中定义一个实体专门对应参数，利用RESTfulAPI实现参数映射到实体上</strong></em></p>
+<p>要使用分为两个步骤：先定义Pydantic模型或者说是模板，然后使用定义好的Pydantic模型来做验证</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Item</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    description: <span class="built_in">str</span> = <span class="literal">None</span></span><br><span class="line">    price: <span class="built_in">float</span></span><br><span class="line">    tax: <span class="built_in">float</span> = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="更加严格的参数限制验证规则"><a href="#更加严格的参数限制验证规则" class="headerlink" title="更加严格的参数限制验证规则"></a>更加严格的参数限制验证规则</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, Query</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">name: <span class="built_in">str</span> = Query(<span class="params">..., max_length=<span class="number">10</span></span>)</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;name&quot;</span>: name&#125;</span><br></pre></td></tr></table></figure>
+<p>read_item()接受一个名为 name 的字符串查询参数。通过使用 Query 函数可以为查询参数指定更多的验证规则，如最大长度限制，当name的长度小于等于10就正常执行，大于10就给出错误提示。<br>同样的参数限制规则还有：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>min_length</code></td>
+<td>最小长度</td>
+<td><code>Query(..., min_length=3)</code></td>
+</tr>
+<tr>
+<td><code>regex</code></td>
+<td>正则表达式</td>
+<td><code>Query(..., regex=&quot;^[a-z]+$&quot;)</code></td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>默认值</td>
+<td><code>Query(default=&quot;hi&quot;)</code></td>
+</tr>
+<tr>
+<td><code>alias</code></td>
+<td>参数别名</td>
+<td><code>Query(..., alias=&quot;item-query&quot;)</code></td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> Query</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params"></span></span><br><span class="line"><span class="params">    name: <span class="built_in">str</span> = Query(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="params">        ...,</span></span></span><br><span class="line"><span class="params"><span class="params">        min_length=<span class="number">3</span>,</span></span></span><br><span class="line"><span class="params"><span class="params">        max_length=<span class="number">10</span>,</span></span></span><br><span class="line"><span class="params"><span class="params">        regex=<span class="string">&quot;^[a-zA-Z]+$&quot;</span>,  <span class="comment"># 只允许字母</span></span></span></span><br><span class="line"><span class="params"><span class="params">        example=<span class="string">&quot;Alice&quot;</span>,       <span class="comment"># OpenAPI 文档示例</span></span></span></span><br><span class="line"><span class="params"><span class="params">    </span>)</span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;name&quot;</span>: name&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 Pydantic 模型能够在服务启动后自动生成 FastAPI 生成交互式 API 文档。文档会包括模型的字段、类型、验证规则等信息，让开发者和 API 使用者能够清晰地了解如何正确使用 API。<br>API文档地址: <em><a href="http://host:port/docs">http://host:port/docs</a></em></p>
+<h2 id="怎么生成交互文档？"><a href="#怎么生成交互文档？" class="headerlink" title="怎么生成交互文档？"></a>怎么生成交互文档？</h2><p>FastAPI 提供了内置的交互式 API 文档，基于 OpenAPI 规范自动生成，支持 Swagger UI 和 ReDoc 两种交互式界面。<br>在运行 FastAPI 应用时，Uvicorn 同时启动了交互式 API 文档服务。默认可以通过访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> 来打开 Swagger UI 风格的文档。<br>文档不仅用于浏览 API 的各个端点、查看请求和响应的结构，还支持直接在文档中进行 API 请求测试。<br>通过 Swagger UI，你可以轻松理解每个路由操作的输入参数、输出格式和请求示例。<br>或者通过 <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/redoc">http://127.0.0.1:8000/redoc</a> 来打开 ReDoc 风格的文档。ReDoc 的设计强调文档的可视化和用户体验</p>
+<h2 id="依赖项，前处理和后处理"><a href="#依赖项，前处理和后处理" class="headerlink" title="依赖项，前处理和后处理"></a>依赖项，前处理和后处理</h2><p>依赖项是在路由操作函数执行前或后运行的可复用的函数或对象。</p>
+<p>它们被用于执行一些通用的逻辑，如验证、身份验证、数据库连接等。在 FastAPI 中，依赖项通常用于两个方面：</p>
+<p>预处理（Before）依赖项： 在路由操作函数执行前运行，用于预处理输入数据，验证请求等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> Depends, FastAPI, HTTPException</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"><span class="comment"># 依赖项函数，用于参数检查</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">common_parameters</span>(<span class="params">q: <span class="built_in">str</span> = <span class="literal">None</span>, skip: <span class="built_in">int</span> = <span class="number">0</span>, limit: <span class="built_in">int</span> = <span class="number">100</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;q&quot;</span>: q, <span class="string">&quot;skip&quot;</span>: skip, <span class="string">&quot;limit&quot;</span>: limit&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 路由操作函数</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/depend/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">read_depend</span>(<span class="params">commons: <span class="built_in">dict</span> = Depends(<span class="params">common_parameters</span>)</span>):</span><br><span class="line">    <span class="keyword">return</span> commons</span><br></pre></td></tr></table></figure>
+<p>请求处理完成后的操作，比如记录日志、修改响应等。在FastAPI中，这样的操作通常不会通过依赖注入（即使用Depends）来实现，因为Depends的主要目的是在请求处理之前提供所需的资源或数据</p>
+<p>后处理逻辑，比如记录日志或修改响应，你更可能会使用FastAPI的@app.on_event(“after_request”)装饰器来注册一个请求后的事件处理函数。这个函数会在每个请求处理完成后被自动调用，更好的方式是使用Fastapi的中间件</p>
+<h2 id="Fastapi中间件的花样"><a href="#Fastapi中间件的花样" class="headerlink" title="Fastapi中间件的花样"></a>Fastapi中间件的花样</h2><h3 id="单个中间件执行顺序"><a href="#单个中间件执行顺序" class="headerlink" title="单个中间件执行顺序"></a>单个中间件执行顺序</h3><p>先看一个例子，用于在所有 HTTP 请求的响应中添加自定义头部 <code>X-After-Request: Processed</code>，并对处理进行计时</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> Request</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>) </span><span class="comment"># 注册 HTTP 中间件，作用是所有经过 FastAPI 的 HTTP 请求都会先经过此中间件处理。</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">add_process_time_header</span>(<span class="params">request: Request, call_next</span>):</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    response.headers[<span class="string">&quot;X-Process-Time&quot;</span>] = <span class="built_in">str</span>(end_time - start_time) <span class="comment"># 请求处理计时</span></span><br><span class="line">    response.headers[<span class="string">&quot;X-After-Request&quot;</span>] = <span class="string">&quot;Processed&quot;</span> <span class="comment"># 添加自定义头 X-After-Request: Processed（常用于调试、日志或安全策略）</span></span><br><span class="line">    <span class="keyword">return</span> response <span class="comment"># 将添加了自定义头的响应返回给客户端。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>@app.middleware(&quot;http&quot;)</code>为标准 FastAPI 使用中间件<br><code>request: Request</code>：当前请求的上下文对象。<br><code>call_next</code>：调用链中的下一个处理函数（可能是路由函数或其他中间件）。</p>
+<p>这里最不好理解的就是请求在加入中间件后的处理流程和顺序，这里我详细介绍一下：<br>以上面的<code>add_process_time_header</code>中间件为例，当访问路由函数<code>GET http://127.0.0.1:8000/name/fjsi</code> 时，会发生以下步骤：</p>
+<blockquote>
+<p>请求到达中间件<br>→ 先执行 <code>start_time = time.time()</code><br>→ 调用 <code>await call_next(request)</code> ，由于没有别的中间件定义，所以直接进入路由函数，即<code>/name/&#123;my_name&#125;</code>对应的函数<code>read_name()</code></p>
+<p>请求进入路由函数<br>→ 执行 路由函数<code>read_name()</code><br>→ 生成响应 <code>&#123;&quot;my_name&quot;: &quot;fjsi&quot;&#125;</code></p>
+<p>返回中间件继续处理<br>→ 执行 <code>end_time = time.time()</code><br>→ 添加两个响应头<br>→ 返回最终响应</p>
+</blockquote>
+<h3 id="多个中间件执行顺序"><a href="#多个中间件执行顺序" class="headerlink" title="多个中间件执行顺序"></a>多个中间件执行顺序</h3><p>搞明白这个执行顺序后，再来研究一下刚提到的多个中间件的情况，多个中间件的执行顺序和中间件定义的顺序有关，用下面的例子来说明：<br>这里我将上面的加processed和计时分成两个中间件了，并且加入了一些日志打印方便查看运行顺序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">add_process_header</span>(<span class="params">request: Request, call_next</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;进入add_process_header&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;退出add_process_header&quot;</span>)</span><br><span class="line">    response.headers[<span class="string">&quot;X-After-Request&quot;</span>] = <span class="string">&quot;Processed&quot;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">add_spend_time_header</span>(<span class="params">request: Request, call_next</span>):</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;进入add_spend_time_header&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;退出add_spend_time_header&quot;</span>)</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    response.headers[<span class="string">&quot;X-Process-Time&quot;</span>] = <span class="built_in">str</span>(end_time - start_time)</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<p>同样访问路由函数<code>GET http://127.0.0.1:8000/name/fjsi</code> 控制台有下面的输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">进入add_spend_time_header</span><br><span class="line">进入add_process_header</span><br><span class="line">退出add_process_header</span><br><span class="line">退出add_spend_time_header</span><br></pre></td></tr></table></figure>
+<p>可见执行顺序是：</p>
+<blockquote>
+<p>请求到达计时中间件<br>→ 先执行 <code>start_time = time.time()</code><br>→ 调用 <code>await call_next(request)</code><br>请求到达processed中间件<br>→ 调用 <code>await call_next(request)</code><br>请求进入路由函数<br>→ 执行 路由函数<code>read_name()</code><br>→ 生成响应 <code>&#123;&quot;my_name&quot;: &quot;fjsi&quot;&#125;</code><br>请求返回processed中间件<br>→ 添加processed响应头<br>返回计时中间件<br>→ 执行 <code>end_time = time.time()</code><br>→ 添加计时响应头<br>→ 返回最终响应</p>
+</blockquote>
+<p>形象一点地做个比喻：<br>有个孤零零地蛋黄(请求)来了，给它裹上蛋白(processed中间件)，再裹上蛋壳(计时中间件)，然后我们的程序想吃蛋黄开始剥鸡蛋(想要处理路由函数)，先剥蛋壳(执行计时中间件)，再剥蛋白(执行processed中间件)，最后吃蛋黄(执行路由函数)，吃完后将蛋白还原(拿到respond，执行processed中间件剩余部分)，最后将蛋壳还原(执行计时中间件剩余部分，返回最终respond)</p>
+<p><strong>要注意中间件顺序：多个中间件按声明顺序执行，执行顺序类似洋葱：从外到内进入，从内到外返回</strong></p>
+<h3 id="中间件的常见用途"><a href="#中间件的常见用途" class="headerlink" title="中间件的常见用途"></a>中间件的常见用途</h3><ul>
+<li>跨域资源共享（CORS）：添加 <code>Access-Control-Allow-*</code> 头。</li>
+<li>请求计时：记录请求处理耗时。</li>
+<li>安全头：注入 <code>X-Frame-Options</code>、<code>Content-Security-Policy</code> 等。</li>
+<li>日志&#x2F;调试：标记请求是否经过处理。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2025/04/13/FastAPI/">https://www.fjsi.top/2025/04/13/FastAPI/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/202405131356058.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/04/13/%E7%90%86%E6%80%A7%E8%AE%A4%E8%AF%86%E2%80%9C%E8%B4%9F%E9%9D%A2%E2%80%9D%E4%B9%A0%E6%83%AF/" title="理性认识“负面”习惯"><img class="cover" src="/img/202405131356053.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">理性认识“负面”习惯</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FastAPI%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">FastAPI是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastAPI%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">FastAPI能做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastAPI%E8%A6%81%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">FastAPI要什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E4%B8%8D%E5%8F%AF%E5%B0%91%E7%9A%84HelloWorld"><span class="toc-number">4.</span> <span class="toc-text">必不可少的HelloWorld</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E4%B8%80%E7%82%B9%EF%BC%8C%E5%B8%A6%E8%B7%AF%E5%BE%84%E5%8F%82%E6%95%B0%E7%9A%84"><span class="toc-number">5.</span> <span class="toc-text">复杂一点，带路径参数的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B0%E5%AF%8C%E4%B8%80%E7%82%B9%EF%BC%8C%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%8A%A0%E9%99%90%E5%88%B6"><span class="toc-number">6.</span> <span class="toc-text">丰富一点，参数类型加限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="toc-number">7.</span> <span class="toc-text">想要发请求体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BB%85%E8%A6%81%E8%AF%B7%E6%B1%82%E4%BD%93%E8%BF%98%E8%A6%81%E8%BF%94%E5%9B%9E%E4%BD%93"><span class="toc-number">8.</span> <span class="toc-text">不仅要请求体还要返回体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%92%8C-Cookie"><span class="toc-number">9.</span> <span class="toc-text">请求头和 Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E8%B7%AF%E7%94%B1"><span class="toc-number">10.</span> <span class="toc-text">重定向路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%8A%9B%E5%87%BA%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">11.</span> <span class="toc-text">异常抛出和异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastAPI-Pydantic-%E6%A8%A1%E5%9E%8B"><span class="toc-number">12.</span> <span class="toc-text">FastAPI Pydantic 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%8A%A0%E4%B8%A5%E6%A0%BC%E7%9A%84%E5%8F%82%E6%95%B0%E9%99%90%E5%88%B6%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99"><span class="toc-number">13.</span> <span class="toc-text">更加严格的参数限制验证规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E4%BA%A4%E4%BA%92%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">怎么生成交互文档？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%A1%B9%EF%BC%8C%E5%89%8D%E5%A4%84%E7%90%86%E5%92%8C%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">15.</span> <span class="toc-text">依赖项，前处理和后处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fastapi%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E8%8A%B1%E6%A0%B7"><span class="toc-number">16.</span> <span class="toc-text">Fastapi中间件的花样</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">16.1.</span> <span class="toc-text">单个中间件执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">16.2.</span> <span class="toc-text">多个中间件执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E9%80%94"><span class="toc-number">16.3.</span> <span class="toc-text">中间件的常见用途</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/AirScript教程/&quot;);" href="javascript:void(0);">AirScript教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/工具使用笔记/&quot;);" href="javascript:void(0);">工具使用笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/教程/&quot;);" href="javascript:void(0);">教程</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Markdown-教程/&quot;);" href="javascript:void(0);">Markdown 教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Java/&quot;);" href="javascript:void(0);">Java</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构与算法/&quot;);" href="javascript:void(0);">数据结构与算法</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356052.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356060.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">AirScript教程</a><div class="blog-slider__text">AirScript简单教程，了解AirScript工具基本使用方法和开发过程.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356059.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">复杂度计算</a><div class="blog-slider__text">时间复杂度、空间复杂度的计算，对数器、比较器的使用.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
