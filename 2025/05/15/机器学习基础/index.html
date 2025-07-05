@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器学习基础 | PeakofMountains</title><meta name="author" content="PeakofMountains,sifangjian@qq.com"><meta name="copyright" content="PeakofMountains"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="简单介绍机器学习和深度学习基础知识.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习基础">
+<meta property="og:url" content="https://www.fjsi.top/2025/05/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="PeakofMountains">
+<meta property="og:description" content="简单介绍机器学习和深度学习基础知识.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fjsi.top/img/202405131356056.jpg">
+<meta property="article:published_time" content="2025-05-14T23:54:00.000Z">
+<meta property="article:modified_time" content="2025-07-05T04:14:41.731Z">
+<meta property="article:author" content="PeakofMountains">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fjsi.top/img/202405131356056.jpg"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://www.fjsi.top/2025/05/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PeakofMountains","link":"链接: ","source":"来源: PeakofMountains","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器学习基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-05 12:14:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/202405131356056.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="PeakofMountains"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">PeakofMountains</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">机器学习基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2025-07-05T04:14:41.731Z" title="更新于 2025-07-05 12:14:41">2025-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="机器学习基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h2><p>机器学习是一个很宽泛的概念，从训练数据中学到知识用到真实数据中就可称为机器学习。</p>
+<p>训练数据不同，训练的方式和达到的效果就不同，由此有了监督学习、无监督学习、半监督学习的区别</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>监督学习</td>
+<td>通过<strong>带标签</strong>的训练数据学习输入（特征）到输出（标签）的映射关系。</td>
+</tr>
+<tr>
+<td>无监督学习</td>
+<td>从<strong>无标签</strong>数据中发现隐藏模式或结构</td>
+</tr>
+<tr>
+<td>半监督学习</td>
+<td>结合<strong>少量标注</strong>数据和<strong>大量未标注</strong>数据进行训练，提升模型性能</td>
+</tr>
+</tbody></table>
+<h3 id="监督学习（Supervised-Learning）"><a href="#监督学习（Supervised-Learning）" class="headerlink" title="监督学习（Supervised Learning）"></a>监督学习（Supervised Learning）</h3><p><strong>定义</strong>：通过带标签的训练数据学习输入（特征）到输出（标签）的映射关系。</p>
+<p><strong>任务类型</strong>：</p>
+<ul>
+<li><strong>分类</strong>：输出为离散类别（如垃圾邮件检测）。</li>
+<li><strong>回归</strong>：输出为连续值（如房价预测）。</li>
+</ul>
+<p><strong>具体实现</strong><br>垃圾邮件检测：<br>训练过程：邮件内容原文-&gt;提取文本特征-&gt;文本特征+标签-&gt;模型训练<br>使用过程：邮件内容原文-&gt;提取文本特征-&gt;模型做分类-&gt;分类结果标签</p>
+<p>关键点：要注意，输入的原文并不是文本特征，需要经过文本特征提取这一步操作，将原始文本转化为模型可理解的数值表示，本质是用数字描述文本的统计或语义信息。<br>示例：<br>原文：”免费赢取华为手机”<br>文本特征提取模型：词袋模型（Bag of Words, BoW）：将文本视为单词的集合，忽略顺序和语法，统计每个词出现的频率。<br>词典：[“免费”, “赢取”, “华为”,”手机”, “点击”]（根据所有邮件构建）<br>特征向量：[1, 1, 1, 1, 0]（对应词典中词的出现次数）<br>输出类别标签：0：正常邮件，1：垃圾邮件</p>
+<p>房价预测：<br>训练过程：房子属性信息+房价-&gt;模型训练<br>使用过程：房子属性信息-&gt;模型-&gt;预测的房价</p>
+<p><strong>常见算法</strong>：</p>
+<ul>
+<li>线性回归：通过最小化预测值与真实值的平方误差求解线性关系参数</li>
+<li>逻辑回归：在线性回归基础上加Sigmoid函数，将输出压缩到[0,1]</li>
+<li>支持向量机（SVM）：寻找最大间隔超平面分离两类数据，常用于高维数据分类</li>
+<li>决策树：通过一系列if-else规则递归划分数据，选择最优分类依据特征</li>
+<li>随机森林：多决策树，通过投票（分类）或平均（回归）提高泛化能力</li>
+</ul>
+<h3 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h3><p><strong>定义</strong>：从无标签数据中发现隐藏模式或结构。</p>
+<p><strong>任务类型</strong>：</p>
+<ul>
+<li><strong>聚类</strong>：将数据分组（如客户分群，图像分隔）。</li>
+<li><strong>降维</strong>：减少数据维度（去除代表性弱的特征）。</li>
+</ul>
+<p><strong>常见算法</strong>：</p>
+<ul>
+<li>K 均值聚类：K-means，最小化簇内方差</li>
+<li>层次聚类：展示数据多层次聚类关系，关注层级关系</li>
+<li>主成分分析（PCA降维）：高维数据投影低维空间，只保留主成分达到降维效果</li>
+</ul>
+<h3 id="半监督学习（Semi-Supervised-Learning）"><a href="#半监督学习（Semi-Supervised-Learning）" class="headerlink" title="半监督学习（Semi-Supervised Learning）"></a>半监督学习（Semi-Supervised Learning）</h3><p><strong>定义</strong>：结合少量标注数据和大量未标注数据进行训练，提升模型性能。<br>场景：你有1000张未标注的猫狗图片，只有50张标注了(25猫，25狗)<br>过程：</p>
+<ol>
+<li>先用50张标注数据训练初步模型</li>
+<li>用初步模型对1000张无标签样本预测，筛选置信度高预测结果(例如模型非常确定一张图是狗)，将这些数据伪标签加入训练集</li>
+<li>重新训练模型，迭代优化</li>
+</ol>
+<p><strong>应用场景</strong>：标注成本高时（如医学图像分类）。<br>医学图像中还可以这样用：</p>
+<ol>
+<li>有50张标注的病例照片，训练初步模型</li>
+<li>给50张病例照片加上模糊、旋转等，并打上同样标签</li>
+<li>使用初步模型进一步训练，要求最小化标签误差<br>这样训练出的模型会具有更高的鲁棒性，例如抗噪声、旋转。</li>
+</ol>
+<h3 id="强化学习（Reinforcement-Learning）"><a href="#强化学习（Reinforcement-Learning）" class="headerlink" title="强化学习（Reinforcement Learning）"></a>强化学习（Reinforcement Learning）</h3><p><strong>定义</strong>：智能体（Agent）通过与环境交互，根据环境反馈（奖励或惩罚）调整策略以最大化累积奖励，从而找出最佳策略。</p>
+<p>不久前北京举办的机器人马拉松中就用到了强化学习，输入地面环境，自行调整关节角度，稳定行走加分奖励，摔倒减分惩罚，通过很多次的试错探索出地面稳定行走的最优动作调整策略。</p>
+<p>核心要素：环境，奖励，惩罚，评价，试错</p>
+<p><strong>适用场景</strong>：需要与环境动态交互、且难以获得大量标注数据的场景（如自动驾驶、游戏AI）。</p>
+<h2 id="深度学习基础"><a href="#深度学习基础" class="headerlink" title="深度学习基础"></a>深度学习基础</h2><h3 id="神经网络基础"><a href="#神经网络基础" class="headerlink" title="神经网络基础"></a>神经网络基础</h3><p>神经网络的基本单元是神经元</p>
+<h4 id="神经元结构"><a href="#神经元结构" class="headerlink" title="神经元结构"></a>神经元结构</h4><p>生物学中神经元具备的结构给了人们启发，应用在计算机领域的神经网络：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>生物神经元</th>
+<th>人工神经元</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接收其他神经元电信号</td>
+<td>树突</td>
+<td>输入和权重</td>
+</tr>
+<tr>
+<td>信号整合</td>
+<td>细胞体</td>
+<td>加权求和</td>
+</tr>
+<tr>
+<td>输出动作电位到其他神经元</td>
+<td>轴突</td>
+<td>经过激活函数后输出</td>
+</tr>
+<tr>
+<td>信号强度</td>
+<td>神经递质释放量</td>
+<td>权重大小</td>
+</tr>
+<tr>
+<td>超阈值触发动作电位</td>
+<td>神经递质阈值</td>
+<td>激活函数</td>
+</tr>
+</tbody></table>
+<p>反向传播：模拟生物神经元的突触可塑性，通过梯度下降调整权重<br>损失函数：量化模型误差，权重更新的依据</p>
+<h4 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h4><p>单个神经元解决问题的能力有限，将多个神经元级联，前一级神经元的输出作为后一级神经元的输入，同一级的神经元扩充数量，形成网状结构。</p>
+<p>神经元中：y &#x3D; f(wx+b)<br>神经网络中：y &#x3D; f(w1x1+w2x2+…+wnxn+b) &#x3D; f(WX+b)<br>f(x)为激活函数，通过让激活函数参与引入非线性。</p>
+<p>这就是一个简单的神经网络模型构成的基本过程，同理不论多么复杂的神经网络，它们都具有<code>输入 → 加权求和 → 激活函数 → 输出</code>这样的基本结构。</p>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>激活函数的作用对应神经元在接受到刺激后是兴奋还是抑制，用在神经网络中主要目的是解决线性不可分问题。</p>
+<ul>
+<li><strong>Sigmoid</strong>：将输入映射到 (0,1)，适用于二分类。:垃圾邮件分类中，输出 0.8 表示“80%概率是垃圾邮件”。</li>
+<li><strong>ReLU</strong>：解决梯度消失问题，加速收敛。:图像识别中，ReLU能快速过滤掉无关像素（负值归零）。</li>
+<li><strong>Softmax</strong>：多分类输出概率归一化。:输出为概率分布（所有类别概率和为1,如MNIST手写数字识别（10分类））。</li>
+<li><strong>tanh</strong>：将输入映射到 [-1,1]，具有零均值特性</li>
+</ul>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>通过计算损失函数对参数的梯度，迭代更新参数以最小化损失。</p>
+<p>目标函数更新方式：<br>θ &#x3D; θ - αΔJ(θ)<br>通过负梯度方向迭代更新参数θ，损失函数 J(θ)。</p>
+<p>α：学习率（步长）。</p>
+<p>∇J(θ)：损失函数对参数的梯度。</p>
+<p>步长太大会反复横跳不易收敛，步长太小导致收敛慢</p>
+<h3 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h3><p>专为网格数据（如图像、视频）设计，关注局部特征，通过局部连接和权值共享减少参数量。</p>
+<p><strong>核心内容</strong>：</p>
+<ul>
+<li>卷积层：使用滤波器卷积提取局部特征，也称为底层卷积</li>
+<li>池化层：降低维度，也称为中层卷积</li>
+<li>全连接层：分类</li>
+<li><strong>应用场景</strong>：图像识别、目标检测</li>
+</ul>
+<p>真实案例：人脸识别</p>
+<ol>
+<li>底层卷积层：检测边缘、色块 → 输出“眼睛边缘”“嘴唇曲线”等低级特征。</li>
+<li>中层卷积层：组合低级特征 → 输出“左眼”“鼻子”等部件。</li>
+<li>高层全连接层：组合部件 → 判断是否是“人脸”。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>作用</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>卷积层</td>
+<td>用滤波器提取局部特征</td>
+<td>用放大镜找图案碎片</td>
+</tr>
+<tr>
+<td>ReLU</td>
+<td>去掉无关信息（负值）</td>
+<td>扔掉模糊的碎片</td>
+</tr>
+<tr>
+<td>池化层</td>
+<td>压缩数据，保留关键特征</td>
+<td>把碎片拼成关键部分</td>
+</tr>
+<tr>
+<td>全连接层</td>
+<td>综合所有特征分类</td>
+<td>判断拼图是不是人脸</td>
+</tr>
+</tbody></table>
+<h3 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h3><ul>
+<li><strong>特点</strong>：通过隐藏状态传递时序信息，使网络具有“记忆”功能。<br>核心是“记忆”，每个时间步处理一个输入，并更新内部状态，输出取决于当前输入和之前的状态<br>例如：<br>x1 &#x3D; “我” → h1 &#x3D; 编码“我”<br>x2 &#x3D; “爱” → h2 &#x3D; 编码“我爱”<br>x3  &#x3D; “吃” → h3  &#x3D; 编码“我爱吃”<br>xn代表n时间的输入，hn代表n时间携带的记忆</li>
+</ul>
+<p>时序包含时间和顺序<br>例子：<br>字符集文本生成，给定前面字符，预测下一个字符<br>时间序列异常检测，检测服务器CPU使用率的异常点</p>
+<h3 id="LSTM（长短期记忆网络）"><a href="#LSTM（长短期记忆网络）" class="headerlink" title="LSTM（长短期记忆网络）"></a>LSTM（长短期记忆网络）</h3><p>LSTM 通过门控机制控制信息的遗忘、更新和输出，解决RNN中长依赖问题和梯度爆炸梯度消失问题。</p>
+<ul>
+<li><strong>应用场景</strong>：文本生成、机器翻译。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>RNN 的表现</th>
+<th>LSTM 的表现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>长句子翻译</td>
+<td>忘记主语，动词单复数错误</td>
+<td>保持主语一致性（如“cat→was”）</td>
+</tr>
+<tr>
+<td>股票价格预测</td>
+<td>忽略早期关键趋势信号</td>
+<td>识别长期趋势（如季度周期）</td>
+</tr>
+<tr>
+<td>文本生成</td>
+<td>前后文矛盾（如角色突然消失）</td>
+<td>维持角色和剧情连贯性</td>
+</tr>
+</tbody></table>
+<p>直观类比<br>RNN：像短期记忆差的人，读完长文章后只记得最后几句。<br>LSTM：像做笔记的学霸，用笔记（门控）选择只记录关键信息，次要信息不予记忆。</p>
+<h2 id="测试填空题"><a href="#测试填空题" class="headerlink" title="测试填空题"></a>测试填空题</h2><ol>
+<li>监督学习与无监督学习最明显的区别是监督学习的训练数据包含________（标签&#x2F;特征）。</li>
+<li>无监督学习中，将数据分为不同组的任务称为________（聚类&#x2F;降维）。</li>
+<li>在强化学习中，智能体通过最大化________（奖励&#x2F;损失）来优化策略。</li>
+<li>CNN 中用于提取图像局部特征的层是________（卷积层&#x2F;全连接层）。</li>
+<li>LSTM 通过________（门控机制&#x2F;池化操作）解决长序列梯度消失问题。</li>
+<li>ReLU 激活函数的数学表达式为________（max(0, x)&#x2F;1&#x2F;(1+e^{-x})）。</li>
+<li>梯度下降算法中，控制参数更新步长的超参数是________（学习率&#x2F;批量大小）。</li>
+<li>半监督学习通常结合少量________数据与大量未标注数据（标注&#x2F;噪声）。</li>
+<li>在多分类任务中，输出层通常使用________激活函数（Softmax&#x2F;Sigmoid）。</li>
+<li>RNN 的隐藏状态设计使其擅长处理________数据（时序&#x2F;图像）。</li>
+</ol>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>Q: 线性回归能用来解决非线性问题吗?<br>A: 线性回归可通过多项式扩展或基函数变换拟合高次函数，本质是将非线性问题转化为线性特征空间中的问题，但仍基于最小化平方误差的线性框架</p>
+<p>Q：监督学习和无监督学习最大的区别是什么？<br>A：监督学习需要数据带有明确的标签（如分类中的类别、回归中的数值），模型学习从输入到标签的映射；而无监督学习没有标签，模型的目标是发现数据本身的模式，例如聚类或降维。</p>
+<p>Q：半监督学习为什么比纯监督学习效果更好？<br>A：半监督学习通过利用大量未标注数据中的潜在信息（如数据分布、相似性），补充少量标注数据的不足，从而提升模型对数据整体结构的理解。例如，在图像分类中，未标注数据可以帮助模型学习更鲁棒的特征。</p>
+<p>Q: 监督学习的常用算法？<br>A: </p>
+<ul>
+<li>线性回归： 线性关系y &#x3D; wX + b，通过最小化预测值与真实值的平方误差（MSE）求解参数 w 和 b。</li>
+<li>逻辑回归：在线性回归基础上加Sigmoid函数，将输出压缩到 (0,1)，表示概率</li>
+<li>支持向量机（SVM）：寻找一个最大间隔超平面分离两类数据，支持向量是离分界面最近的样本点。常用于高维数据分类</li>
+<li>决策树：通过一系列if-else规则递归划分数据，关键在选择最优分类依据特征</li>
+<li>随机森林：构建多棵决策树，通过投票（分类）或平均（回归）提高泛化能力。每棵树用随机样本+随机特征训练。</li>
+</ul>
+<p>Q: 自监督学习是什么？<br>自监督属于广义的无监督学习：两者都不依赖人工标注，但自监督通过构造伪标签模拟监督任务。<br>自监督常用于预训练：例如，用自监督任务（如预测缺失词）预训练BERT，再用少量标注数据微调下游任务（如文本分类）。</p>
+<p>Q: 无监督学习常用算法？</p>
+<ul>
+<li>K 均值聚类：将数据划分为K个簇，使得每个样本到其所属簇中心的距离最小</li>
+<li>层次聚类：将数据按照相似度逐层合并（或分裂），最终形成一棵树状图（Dendrogram），可以自由决定分多少组。适用于需要分析层次结构时（如生物基因聚类、文档主题分级）。</li>
+<li>主成分分析（PCA）：通过正交变换将高维数据投影到低维空间，保留最大方差（即最重要特征），例如将语文、数学、物理三门课成绩降维成二维主成分文科、理科</li>
+</ul>
+<p>Q：强化学习和监督学习中的“奖励”与“标签”有何不同？<br>A：监督学习的标签是静态的、明确的答案（如“这张图片是猫”），而强化学习的奖励是动态的、延迟的反馈信号（如“机器人移动后获得+1分”），模型需要通过试错学习最大化累积奖励。</p>
+<p>Q：CNN为什么适合处理图像数据？<br>A：CNN的卷积层通过局部感受和权值共享，能够自动提取图像的局部特征（如边缘、纹理），且对平移、缩放具有一定不变性。池化层进一步降低计算量并增强鲁棒性。</p>
+<p>Q：RNN和LSTM的区别是什么？为什么LSTM能解决长序列问题？<br>A：传统RNN的隐藏状态在长序列中容易梯度消失&#x2F;爆炸，导致无法记住长期依赖。LSTM通过门控机制（遗忘门、输入门、输出门）控制信息的流动，选择性保留或丢弃信息，从而缓解这一问题。</p>
+<p>Q：激活函数为什么不能都用线性函数（如f(x)&#x3D;x）？<br>A：若全部使用线性激活函数，多层神经网络的输出仍然是输入的线性组合，等价于单层网络，无法拟合非线性关系。非线性的激活函数（如ReLU）使神经网络具备强大的非线性表达能力。</p>
+<p>Q：梯度下降中为什么要用学习率（Learning Rate）？如何选择合适的学习率？<br>A：学习率控制参数更新的步长。步长过大会震荡不收敛，过小则收敛缓慢。可通过网格搜索、学习率衰减（如指数衰减）或自适应优化器（如Adam）自动调整。</p>
+<p>Q：为什么训练神经网络需要批量（Batch）？Batch Size越大越好吗？<br>A：批量训练能利用矩阵运算加速计算，同时引入噪声提升泛化性。但Batch Size过大会占用更多内存，且可能陷入局部最优。一般根据硬件条件平衡，常用32&#x2F;64&#x2F;128。</p>
+<p>Q：过拟合是什么？如何解决？<br>A：过拟合是模型在训练集上表现好，但在测试集上差，通常因为模型复杂度过高或数据量不足。解决方法包括：增加数据量、正则化（L1&#x2F;L2）、Dropout、早停（Early Stopping）等。</p>
+<p>Q：无监督学习在实际中有哪些应用？<br>A：典型应用包括：客户分群（如电商用户行为聚类）、异常检测（如信用卡欺诈识别）、推荐系统（通过降维分析用户兴趣）</p>
+<p>Q：什么时候该用强化学习而不是监督学习？<br>A：当问题需要与环境动态交互、且难以获得大量标注数据时（如自动驾驶、游戏AI）。强化学习通过试错学习策略，而监督学习依赖静态标签。</p>
+<p>Q：深度学习模型是不是层数越多越好？<br>A：并非如此。层数增加可能带来梯度消失&#x2F;爆炸、过拟合、计算成本高等问题。需根据任务复杂度、数据量、硬件条件选择合适深度，残差连接（ResNet）等技术可缓解深层网络训练困难。</p>
+<p>Q：未来机器学习的发展趋势是什么？<br>A：可能方向包括：更高效的小样本学习（如元学习）、自监督与无监督结合的通用模型、模型可解释性与伦理问题研究</p>
+<h2 id="测试题答案"><a href="#测试题答案" class="headerlink" title="测试题答案"></a>测试题答案</h2><ol>
+<li>标签  </li>
+<li>聚类  </li>
+<li>奖励  </li>
+<li>卷积层  </li>
+<li>门控机制  </li>
+<li>max(0, x)  </li>
+<li>学习率  </li>
+<li>标注  </li>
+<li>Softmax  </li>
+<li>时序</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top">PeakofMountains</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2025/05/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">https://www.fjsi.top/2025/05/15/机器学习基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">PeakofMountains</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></div><div class="post_share"><div class="social-share" data-image="/img/202405131356056.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/05/07/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/" title="多线程与异步"><img class="cover" src="/img/202405131356058.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">多线程与异步</div></div></a></div><div class="next-post pull-right"><a href="/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/" title="什么是RAG"><img class="cover" src="/img/202405131356060.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">什么是RAG</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">机器学习基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Supervised-Learning%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">监督学习（Supervised Learning）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Unsupervised-Learning%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">无监督学习（Unsupervised Learning）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Semi-Supervised-Learning%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">半监督学习（Semi-Supervised Learning）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88Reinforcement-Learning%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">强化学习（Reinforcement Learning）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">深度学习基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80"><span class="toc-number">2.1.</span> <span class="toc-text">神经网络基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">神经元结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">2.1.2.</span> <span class="toc-text">神经网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">2.3.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">卷积神经网络（CNN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">循环神经网络（RNN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LSTM%EF%BC%88%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%BD%91%E7%BB%9C%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">LSTM（长短期记忆网络）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%A1%AB%E7%A9%BA%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">测试填空题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-number">4.</span> <span class="toc-text">拓展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%A2%98%E7%AD%94%E6%A1%88"><span class="toc-number">5.</span> <span class="toc-text">测试题答案</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By PeakofMountains</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+      appKey: 'QRn9VWkyncsR3PjVnFTR58H5',
+      avatar: 'monsterid',
+      serverURLs: 'https://p3byhxex.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/valine/1.4.16/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://p3byhxex.lc-cn-n1-shared.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'P3ByhxEx5S12rm9jNqmQmmMv-gzGzoHsz',
+        "X-LC-Key": 'QRn9VWkyncsR3PjVnFTR58H5',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 30/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="7194024885" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true"> </div><script src="/js/switchPostChart.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/202405131356060.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/教程/&quot;);" href="javascript:void(0);">教程</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr">Markdown 教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356056.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/工具使用笔记/&quot;);" href="javascript:void(0);">工具使用笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">手把手搭建个人博客系列教程</span></li><li class="categoryBar-list-item" style="background:url(/img/202405131356053.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/大模型应用实践/&quot;);" href="javascript:void(0);">大模型应用实践</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">磁盘瘦身教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Java/&quot;);" href="javascript:void(0);">Java</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构与算法/&quot;);" href="javascript:void(0);">数据结构与算法</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人成长/&quot;);" href="javascript:void(0);">个人成长</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/博客搭建系列教程/&quot;);" href="javascript:void(0);">博客搭建系列教程</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人成长/职业发展/&quot;);" href="javascript:void(0);">职业发展</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/心理学/&quot;);" href="javascript:void(0);">心理学</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/自我提升/&quot;);" href="javascript:void(0);">自我提升</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/磁盘瘦身教程/&quot;);" href="javascript:void(0);">磁盘瘦身教程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本为Butterfly_v4.13.0" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="使用JsDelivr为静态资源CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-一</a><div class="blog-slider__text">本节完成个人博客搭建中工具和环境的安装和配置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/16/手把手搭建个人博客系列教程-一/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356052.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">手把手搭建个人博客系列教程-四</a><div class="blog-slider__text">本节开始个人博客搭建中博客的初步美化，导航栏、代码、侧边社交栏，各种图片背景封面的设置</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/19/手把手搭建个人博客系列教程-四/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356055.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">Markdown教程</a><div class="blog-slider__text">Markdown教程，markdown书写简易手册.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/15/Markdown教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356058.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-05-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">磁盘瘦身教程</a><div class="blog-slider__text">本节主要介绍几种磁盘清理的方案,以及计算机文件存储的特点,帮助使用者更好地了解和管理计算机文件.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/05/28/磁盘瘦身教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356056.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">AirScript教程</a><div class="blog-slider__text">AirScript简单教程，了解AirScript工具基本使用方法和开发过程.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/AirScript教程/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="/img/202405131356053.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">复杂度计算</a><div class="blog-slider__text">时间复杂度、空间复杂度的计算，对数器、比较器的使用.</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/06/22/复杂度计算/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
