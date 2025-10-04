@@ -1,18 +1,18 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>什么是RAG | 方见思</title><meta name="author" content="Fjsi,sifangjian@qq.com"><meta name="copyright" content="Fjsi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="详解RAG技术如何通过外部知识库增强大模型能力，解决企业私域问答场景下的文本处理、向量化检索与生成式回答全流程。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>无线串流教程 | 方见思</title><meta name="author" content="Fjsi,sifangjian@qq.com"><meta name="copyright" content="Fjsi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="本节介绍如何使用Sunshine和Moonlight实现串流，同时借助ParsecVDisplay实现无线副屏。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什么是RAG">
-<meta property="og:url" content="https://www.fjsi.top/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/index.html">
+<meta property="og:title" content="无线串流教程">
+<meta property="og:url" content="https://www.fjsi.top/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="方见思">
-<meta property="og:description" content="详解RAG技术如何通过外部知识库增强大模型能力，解决企业私域问答场景下的文本处理、向量化检索与生成式回答全流程。">
+<meta property="og:description" content="本节介绍如何使用Sunshine和Moonlight实现串流，同时借助ParsecVDisplay实现无线副屏。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.fjsi.top/img/%E4%BB%80%E4%B9%88%E6%98%AFRAG.jpg">
-<meta property="article:published_time" content="2025-05-14T23:54:00.000Z">
-<meta property="article:modified_time" content="2025-09-09T14:32:00.606Z">
+<meta property="og:image" content="https://www.fjsi.top/img/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B.jpg">
+<meta property="article:published_time" content="2025-10-04T12:07:28.000Z">
+<meta property="article:modified_time" content="2025-10-04T14:06:51.772Z">
 <meta property="article:author" content="Fjsi">
-<meta property="article:tag" content="RAG">
-<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="无线串流">
+<meta property="article:tag" content="扩展副屏">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.fjsi.top/img/%E4%BB%80%E4%B9%88%E6%98%AFRAG.jpg"><link rel="shortcut icon" href="/img/profilePicture.jpg"><link rel="canonical" href="https://www.fjsi.top/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://www.fjsi.top/img/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B.jpg"><link rel="shortcut icon" href="/img/profilePicture.jpg"><link rel="canonical" href="https://www.fjsi.top/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
@@ -52,12 +52,12 @@
   },
   autoDarkmode: true
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '什么是RAG',
+  title: '无线串流教程',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-09-09 22:32:00'
+  postUpdate: '2025-10-04 22:06:51'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -183,125 +183,96 @@
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/%E4%BB%80%E4%B9%88%E6%98%AFRAG.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="方见思"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">方见思</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">什么是RAG</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2025-09-09T14:32:00.606Z" title="更新于 2025-09-09 22:32:00">2025-09-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/" data-flag-title="什么是RAG"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自2025年年初DeepSeek引发广泛关注以来，大模型技术逐渐家喻户晓。作为其重要应用方向之一，RAG（检索增强生成）技术也被更多提及。<br>本文将对RAG的核心技术流程进行简要解析。</p>
-<h2 id="RAG从何而来？"><a href="#RAG从何而来？" class="headerlink" title="RAG从何而来？"></a>RAG从何而来？</h2><p>可将大模型类比为理解力极强的人类，但其无法回答未接触过的领域问题——这类问题称为<strong>私域问题</strong>。  </p>
-<blockquote>
-<p>例如提问：”我今天早上9点到达公司是否迟到？” 大模型无法直接回答，因为它不了解公司考勤制度。若将考勤规则提供给大模型，它即可作出准确判断。  </p>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profilePicture.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="方见思"><img class="site-icon" src="/img/profilePicture.jpg"/><span class="site-name">方见思</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 放松</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无线串流教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2025-10-04T14:06:51.772Z" title="更新于 2025-10-04 22:06:51">2025-10-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/" data-flag-title="无线串流教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>在日常编码工作中，频繁在多个窗口间切换屏幕令人分神。我手头有一台屏幕素质优异的平板电脑，却一直未被充分利用。于是，我萌生了一个想法：能否将平板变为笔记本的无线副屏？经过一番探索，我成功通过 Sunshine + Moonlight 串流方案实现了这一目标，体验非常流畅。现将具体操作流程整理成文，以供参考。</p>
 </blockquote>
-<p>企业实际场景中私域问题极为常见，RAG技术正是为此而生。</p>
-<h2 id="什么是RAG？"><a href="#什么是RAG？" class="headerlink" title="什么是RAG？"></a>什么是RAG？</h2><p><strong>RAG技术</strong>：  </p>
-<blockquote>
-<p><strong>R：检索</strong> - 构建知识库的过程<br><strong>A：增强</strong> - 扩展模型知识边界的能力<br><strong>G：生成</strong> - 基于知识库的问答过程  </p>
-</blockquote>
-<p><em>本质是通过构建外部知识库，赋能大模型完成精准问答</em></p>
-<h2 id="RAG核心流程"><a href="#RAG核心流程" class="headerlink" title="RAG核心流程"></a>RAG核心流程</h2><p>RAG整个过程可以分为下面几个步骤：</p>
-<pre class="mermaid">graph LR
-    A(原始文档)-->B(文本分割)-->C(向量化)-->|存储|D[向量数据库]
-    Q[提问问题]-->E(向量化)-->D[向量数据库]-->|相似度检索|F[文本]-->|提示词模板|G[提示词]-->H[LLM]-->I(回答内容)
-    Q[提问问题]-->|提示词模板|G[提示词]</pre>
+<h2 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h2><p><strong>软件工具：</strong></p>
+<ul>
+<li>Sunshine: 开源、跨显卡的串流服务端（主机端）</li>
+<li>Moonlight: 跨平台的串流客户端（客户端）</li>
+<li>ParsecVDisplay: 虚拟显示器驱动</li>
+</ul>
+<p><strong>操作系统：</strong></p>
+<ul>
+<li>Windows10 专业版</li>
+</ul>
+<h2 id="工具简介与协作原理"><a href="#工具简介与协作原理" class="headerlink" title="工具简介与协作原理"></a>工具简介与协作原理</h2><p>在开始操作前，了解这三个工具的分工至关重要：</p>
+<ul>
+<li><p><strong>Sunshine</strong>：这是运行在Windows电脑上的服务端软件。它负责高效捕获系统屏幕画面与音频，进行硬件编码，并通过网络流式传输。其跨显卡兼容性和低延迟特性，是高质量串流的基石。</p>
+</li>
+<li><p><strong>Moonlight</strong>：这是安装在平板上的客户端软件。它负责接收来自<strong>Sunshine</strong>的音视频流，并在平板上进行高清、低延迟的解码与显示。同时，它将平板的触控或外接输入指令回传给电脑，实现交互控制。</p>
+</li>
+<li><p><strong>ParsecVDisplay</strong>：这是一个虚拟显示器驱动。它的核心作用是创建一个虚拟的“第二块屏幕”，从而 “欺骗” Windows系统识别到额外的显示输出。我们将此虚拟显示器的内容通过Sunshine串流至平板，即可实现真正的多屏扩展，而非简单的屏幕镜像。</p>
+</li>
+</ul>
+<p>总结：<strong>ParsecVDisplay</strong> 创建副屏信号 → <strong>Sunshine</strong> 捕获并串流该信号 → <strong>Moonlight</strong> 在平板上接收并显示。三者协同，便将平板打造成了一个真正的无线副屏。</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="部署Sunshine服务端"><a href="#部署Sunshine服务端" class="headerlink" title="部署Sunshine服务端"></a>部署Sunshine服务端</h3><p>在电脑上下载并安装 Sunshine。请注意，安装路径中不得包含中文字符，以避免潜在的运行错误。</p>
+<p>安装完成后，默认会跳转至其Web配置界面。若未自动打开，您可以在系统任务栏的Sunshine图标上右键，选择 Open Sunshine，或在浏览器中手动输入 <code>https://localhost:47990</code> 进行访问。</p>
+<p>进入 <code>Configuration</code> -&gt; <code>General</code> 标签页，将语言切换为中文，记得保存。</p>
+<p>再次右键任务栏Sunshine图标，选择 <code>Restart</code> 以重启服务并使配置生效。</p>
+<h3 id="配置Moonlight客户端并建立基础串流"><a href="#配置Moonlight客户端并建立基础串流" class="headerlink" title="配置Moonlight客户端并建立基础串流"></a>配置Moonlight客户端并建立基础串流</h3><p>在平板电脑上安装 Moonlight。</p>
+<p>确保平板与电脑连接至同一局域网（或直接连接至电脑开启的移动热点）。</p>
+<p>启动Moonlight，它应能自动发现局域网内的电脑主机。点击连接，即可看到电脑主屏幕的镜像，此时基础串流已建立。</p>
+<p>你可以在Moonlight的设置中，根据网络状况调整串流的分辨率、码率、帧率以及音频输出设备，以优化体验。</p>
+<h3 id="创建虚拟副屏"><a href="#创建虚拟副屏" class="headerlink" title="创建虚拟副屏"></a>创建虚拟副屏</h3><p>仅实现屏幕镜像尚不能满足副屏需求，我们需要创建一个独立的显示空间。</p>
+<p>在电脑上下载并运行 <strong>ParsecVDisplay</strong>。</p>
+<p>启动软件，点击 <code>Add Display</code>，系统将自动创建一个虚拟显示器。</p>
+<p>在该虚拟显示器上右键，可以进行详细配置：</p>
+<ul>
+<li><p>Resolution: 设置分辨率。</p>
+</li>
+<li><p>Refresh Rate: 设置刷新率。</p>
+</li>
+<li><p>Orientation: 设置方向（横向、纵向等）。</p>
+</li>
+</ul>
+<p><strong>关键项：记录 <code>\\.\DISPLAYx</code>（x为数字）的值，下一步将用到。</strong></p>
+<h3 id="配置Sunshine串流虚拟屏幕"><a href="#配置Sunshine串流虚拟屏幕" class="headerlink" title="配置Sunshine串流虚拟屏幕"></a>配置Sunshine串流虚拟屏幕</h3><p>现在，我们需要让Sunshine捕获并串流我们刚创建的虚拟屏幕。</p>
+<p>打开Sunshine的Web配置页面，进入 <code>配置</code> -&gt; <code>音频/视频</code> 标签页。</p>
+<p>在 <code>输出名称</code> 字段中，填入上一步记录的 <code>\\.\DISPLAYx</code> 值。</p>
+<p>（可选）配置音频：若希望电脑扬声器统一输出声音，可进行如下设置：</p>
+<p>打开<code>设备管理器</code> -&gt; <code>声音、视频和游戏控制器</code>，在您正在使用的扬声器设备上右键，选择 <code>属性</code> -&gt; <code>详细信息</code> -&gt; <code>属性</code>，在下拉菜单中选择设备id，记录下面属性值。</p>
+<p>在Sunshine的 <code>音频输出设备</code> 和 <code>虚拟音频输出设备</code> 字段中，均填入该值。</p>
+<p>同时确保 <code>安装Steam音频驱动程序</code> 选项处于<code>禁用</code>状态。</p>
+<p>完成所有配置后，务必在任务栏右键Sunshine图标，选择 <code>Restart</code> 以重启服务。</p>
+<h3 id="验证与最终设置"><a href="#验证与最终设置" class="headerlink" title="验证与最终设置"></a>验证与最终设置</h3><p>从平板端的Moonlight断开连接，然后重新连接。此时，平板应显示为一块空白或带有壁纸的“新屏幕”。</p>
+<p>在电脑上打开 <code>设置</code> -&gt; <code>系统</code> -&gt; <code>显示</code>。你将看到两个屏幕标识，其中一块即为你的虚拟副屏。</p>
+<p>你可以在此界面中，通过拖拽屏幕图示来调整物理屏幕与虚拟副屏的相对位置，并可分别为它们设置合适的分辨率与缩放比例。</p>
+<div class="note info flat"><ul>
+<li>重要提示：在Sunshine中修改任何配置后，都必须执行 <code>Restart</code> 才能生效。</li>
+</ul>
+</div>
 
-<blockquote>
-<p><strong>索引过程</strong>（R构建知识库）：<br>原始文档 → 向量数据库存储<br><strong>检索过程</strong>（A增强）：<br>用户问题 → 相似度匹配 → 关联知识块<br><strong>生成过程</strong>（G生成）：<br>问题+知识块 → 提示词工程 → 大模型生成答案  </p>
-</blockquote>
-<h2 id="关键技术细节"><a href="#关键技术细节" class="headerlink" title="关键技术细节"></a>关键技术细节</h2><h3 id="1-文档处理"><a href="#1-文档处理" class="headerlink" title="1. 文档处理"></a>1. 文档处理</h3><ul>
-<li><strong>存储格式</strong>：Excel&#x2F;Word等格式影响文本分割策略  </li>
-<li><strong>多模态支持</strong>：PDF&#x2F;图片&#x2F;音频需结合多模态解析技术  </li>
-<li><strong>数据清洗</strong>：大模型容错性高，基础清洗即可满足需求</li>
-</ul>
-<h3 id="2-文本切割"><a href="#2-文本切割" class="headerlink" title="2. 文本切割"></a>2. 文本切割</h3><p><em><strong>核心原则：语义完整性与独立性平衡</strong></em>  </p>
+
+
+
+<h2 id="常见问题与解决方法"><a href="#常见问题与解决方法" class="headerlink" title="常见问题与解决方法"></a>常见问题与解决方法</h2><ol>
+<li>忘记Sunshine的Web界面用户名&#x2F;密码</li>
+</ol>
+<p>解决：卸载Sunshine后重新安装，即可重置凭据。</p>
+<ol start="2">
+<li>启用虚拟显示器后，Sunshine报错：<code>Fatal: Unable to find display or encoder...</code></li>
+</ol>
+<p>解决：</p>
 <ul>
-<li><strong>切割方式</strong>（复杂度递增）：  <ul>
-<li>按字数&#x2F;Token数分割  </li>
-<li>按标点符号分段  </li>
-<li>依文档结构（标题&#x2F;段落&#x2F;章节）划分  </li>
-<li>先标点初分→语义相似度聚合（最优方案）</li>
+<li>检查Sunshine <code>配置</code> -&gt; <code>音频/视频</code> -&gt; <code>输出名称</code> 是否与ParsecVDisplay中显示的 <code>\\.\DISPLAYx</code> 完全一致。</li>
+<li>重启Sunshine服务。</li>
 </ul>
+<ol start="3">
+<li>Moonlight端提示<code>串流终结，检查防火墙和端口转发规则</code></li>
+</ol>
+<p>解决：</p>
+<ul>
+<li><p>首先，确认Moonlight中输入的电脑IP地址正确无误。</p>
 </li>
-<li><strong>知识块</strong>：切割后形成的独立语义单元  </li>
-<li><strong>理想状态</strong>：原始文档本身为结构化问答对</li>
-</ul>
-<h3 id="3-向量化"><a href="#3-向量化" class="headerlink" title="3. 向量化"></a>3. 向量化</h3><p><strong>文本数字化方案演进</strong>：  </p>
-<table>
-<thead>
-<tr>
-<th>技术</th>
-<th>特点描述</th>
-<th>向量类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>词袋模型</td>
-<td>统计词频（是否出现&#x2F;出现次数）</td>
-<td>稀疏向量</td>
-</tr>
-<tr>
-<td>TF-IDF</td>
-<td>词频×逆文档频率（突出关键词）</td>
-<td>稀疏向量</td>
-</tr>
-<tr>
-<td>词向量</td>
-<td>神经网络训练的词级语义表示</td>
-<td>稠密向量</td>
-</tr>
-<tr>
-<td>Embedding</td>
-<td>Transformer模型输出的上下文语义编码</td>
-<td>稠密向量</td>
-</tr>
-</tbody></table>
-<p><strong>核心差异</strong>：  </p>
-<ul>
-<li>稀疏向量：高维稀疏（多数位置为0），保留词频特征  </li>
-<li>稠密向量：固定维度（如128&#x2F;512维），编码深层语义  </li>
-<li><em>关键特性：稠密向量维度固定且无列含义，仅表征整体语义</em></li>
-</ul>
-<h3 id="4-向量数据库"><a href="#4-向量数据库" class="headerlink" title="4. 向量数据库"></a>4. 向量数据库</h3><p><strong>三大核心能力</strong>：  </p>
-<ul>
-<li><strong>Embedding集成</strong>：支持指定模型自动生成向量  </li>
-<li><strong>混合存储</strong>：向量+元数据（作者&#x2F;日期等标量字段）  </li>
-<li><strong>联合检索</strong>：  <ul>
-<li>标量检索（关键词过滤）  </li>
-<li>向量检索（语义相似度匹配）</li>
-</ul>
+<li><p>其次，检查虚拟屏幕配置是否正确（参考问题2的解决方案）。</p>
+</li>
+<li><p>再次，重启Sunshine服务。</p>
+</li>
+<li><p>最后，对于笔记本电脑，请进入BIOS&#x2F;UEFI设置或显卡控制面板，关闭“独显直连”模式，切换至“混合图形”模式，然后重启电脑。此举是因为独显直连模式下，核显被屏蔽，可能导致Sunshine无法正常捕获屏幕。混合模式能自动调度核显与独显，在保证性能的同时兼顾兼容性与能效。</p>
 </li>
 </ul>
-<p><strong>相似度度量</strong>：  </p>
-<ul>
-<li>余弦相似度 → 向量方向一致性  </li>
-<li>欧氏距离 → 向量空间绝对距离</li>
-</ul>
-<h3 id="5-提示词工程"><a href="#5-提示词工程" class="headerlink" title="5. 提示词工程"></a>5. 提示词工程</h3><p><strong>模板结构</strong>：<br><code>[系统角色定义]</code> + <code>[输出格式要求]</code> + <code>[历史对话上下文]</code> + <code>用户问题：&#123;question&#125;</code> + <code>参考知识：&#123;retrieved_context&#125;</code><br><em>动态部分仅占30%，70%为预定义的结构化指令</em></p>
-<h3 id="6-LLM模型选择"><a href="#6-LLM模型选择" class="headerlink" title="6. LLM模型选择"></a>6. LLM模型选择</h3><table>
-<thead>
-<tr>
-<th>考量维度</th>
-<th>开源模型</th>
-<th>闭源模型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>成本</td>
-<td>免授权费</td>
-<td>按Token付费</td>
-</tr>
-<tr>
-<td>数据安全</td>
-<td>私有化部署保障安全</td>
-<td>数据需传输至第三方</td>
-</tr>
-<tr>
-<td>性能表现</td>
-<td>依赖自身优化能力</td>
-<td>提供商持续优化</td>
-</tr>
-<tr>
-<td>硬件投入</td>
-<td>需自建GPU集群</td>
-<td>零硬件投入（API调用）</td>
-</tr>
-</tbody></table>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/">Fjsi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2025/05/15/%E4%BB%80%E4%B9%88%E6%98%AFRAG/">https://www.fjsi.top/2025/05/15/什么是RAG/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">方见思</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RAG/">RAG</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post_share"><div class="social-share" data-image="/img/%E4%BB%80%E4%B9%88%E6%98%AFRAG.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/05/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" title="机器学习基础"><img class="cover" src="/img/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">机器学习基础</div></div></a></div><div class="next-post pull-right"><a href="/2025/07/02/%E8%83%BD%E9%87%8F%E7%AE%A1%E7%90%86/" title="能量管理：比时间管理更重要的生存法则"><img class="cover" src="/img/%E8%83%BD%E9%87%8F%E7%AE%A1%E7%90%86.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">能量管理：比时间管理更重要的生存法则</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAG%E4%BB%8E%E4%BD%95%E8%80%8C%E6%9D%A5%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">RAG从何而来？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFRAG%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">什么是RAG？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAG%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">RAG核心流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82"><span class="toc-number">5.</span> <span class="toc-text">关键技术细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86"><span class="toc-number">5.1.</span> <span class="toc-text">1. 文档处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%87%E6%9C%AC%E5%88%87%E5%89%B2"><span class="toc-number">5.2.</span> <span class="toc-text">2. 文本切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%90%91%E9%87%8F%E5%8C%96"><span class="toc-number">5.3.</span> <span class="toc-text">3. 向量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.4.</span> <span class="toc-text">4. 向量数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B"><span class="toc-number">5.5.</span> <span class="toc-text">5. 提示词工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-LLM%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-number">5.6.</span> <span class="toc-text">6. LLM模型选择</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Fjsi</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/">Fjsi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fjsi.top/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/">https://www.fjsi.top/2025/10/04/无线串流教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fjsi.top" target="_blank">方见思</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81/">无线串流</a><a class="post-meta__tags" href="/tags/%E6%89%A9%E5%B1%95%E5%89%AF%E5%B1%8F/">扩展副屏</a></div><div class="post_share"><div class="social-share" data-image="/img/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>投喂作者</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/10/04/MCP%E6%95%99%E7%A8%8B/" title="MCP教程"><img class="cover" src="/img/MCP%E6%95%99%E7%A8%8B.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MCP教程</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">环境与工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%8D%8F%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">工具简介与协作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2Sunshine%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">3.1.</span> <span class="toc-text">部署Sunshine服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMoonlight%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B9%B6%E5%BB%BA%E7%AB%8B%E5%9F%BA%E7%A1%80%E4%B8%B2%E6%B5%81"><span class="toc-number">3.2.</span> <span class="toc-text">配置Moonlight客户端并建立基础串流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E5%89%AF%E5%B1%8F"><span class="toc-number">3.3.</span> <span class="toc-text">创建虚拟副屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESunshine%E4%B8%B2%E6%B5%81%E8%99%9A%E6%8B%9F%E5%B1%8F%E5%B9%95"><span class="toc-number">3.4.</span> <span class="toc-text">配置Sunshine串流虚拟屏幕</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%9C%80%E7%BB%88%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.5.</span> <span class="toc-text">验证与最终设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">常见问题与解决方法</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Fjsi</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')

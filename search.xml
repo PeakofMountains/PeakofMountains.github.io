@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>无线串流教程</title>
+      <link href="/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/"/>
+      <url>/2025/10/04/%E6%97%A0%E7%BA%BF%E4%B8%B2%E6%B5%81%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote><p>在日常编码工作中，频繁在多个窗口间切换屏幕令人分神。我手头有一台屏幕素质优异的平板电脑，却一直未被充分利用。于是，我萌生了一个想法：能否将平板变为笔记本的无线副屏？经过一番探索，我成功通过 Sunshine + Moonlight 串流方案实现了这一目标，体验非常流畅。现将具体操作流程整理成文，以供参考。</p></blockquote><h2 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h2><p><strong>软件工具：</strong></p><ul><li>Sunshine: 开源、跨显卡的串流服务端（主机端）</li><li>Moonlight: 跨平台的串流客户端（客户端）</li><li>ParsecVDisplay: 虚拟显示器驱动</li></ul><p><strong>操作系统：</strong></p><ul><li>Windows10 专业版</li></ul><h2 id="工具简介与协作原理"><a href="#工具简介与协作原理" class="headerlink" title="工具简介与协作原理"></a>工具简介与协作原理</h2><p>在开始操作前，了解这三个工具的分工至关重要：</p><ul><li><p><strong>Sunshine</strong>：这是运行在Windows电脑上的服务端软件。它负责高效捕获系统屏幕画面与音频，进行硬件编码，并通过网络流式传输。其跨显卡兼容性和低延迟特性，是高质量串流的基石。</p></li><li><p><strong>Moonlight</strong>：这是安装在平板上的客户端软件。它负责接收来自<strong>Sunshine</strong>的音视频流，并在平板上进行高清、低延迟的解码与显示。同时，它将平板的触控或外接输入指令回传给电脑，实现交互控制。</p></li><li><p><strong>ParsecVDisplay</strong>：这是一个虚拟显示器驱动。它的核心作用是创建一个虚拟的“第二块屏幕”，从而 “欺骗” Windows系统识别到额外的显示输出。我们将此虚拟显示器的内容通过Sunshine串流至平板，即可实现真正的多屏扩展，而非简单的屏幕镜像。</p></li></ul><p>总结：<strong>ParsecVDisplay</strong> 创建副屏信号 → <strong>Sunshine</strong> 捕获并串流该信号 → <strong>Moonlight</strong> 在平板上接收并显示。三者协同，便将平板打造成了一个真正的无线副屏。</p><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="部署Sunshine服务端"><a href="#部署Sunshine服务端" class="headerlink" title="部署Sunshine服务端"></a>部署Sunshine服务端</h3><p>在电脑上下载并安装 Sunshine。请注意，安装路径中不得包含中文字符，以避免潜在的运行错误。</p><p>安装完成后，默认会跳转至其Web配置界面。若未自动打开，您可以在系统任务栏的Sunshine图标上右键，选择 Open Sunshine，或在浏览器中手动输入 <code>https://localhost:47990</code> 进行访问。</p><p>进入 <code>Configuration</code> -&gt; <code>General</code> 标签页，将语言切换为中文，记得保存。</p><p>再次右键任务栏Sunshine图标，选择 <code>Restart</code> 以重启服务并使配置生效。</p><h3 id="配置Moonlight客户端并建立基础串流"><a href="#配置Moonlight客户端并建立基础串流" class="headerlink" title="配置Moonlight客户端并建立基础串流"></a>配置Moonlight客户端并建立基础串流</h3><p>在平板电脑上安装 Moonlight。</p><p>确保平板与电脑连接至同一局域网（或直接连接至电脑开启的移动热点）。</p><p>启动Moonlight，它应能自动发现局域网内的电脑主机。点击连接，即可看到电脑主屏幕的镜像，此时基础串流已建立。</p><p>你可以在Moonlight的设置中，根据网络状况调整串流的分辨率、码率、帧率以及音频输出设备，以优化体验。</p><h3 id="创建虚拟副屏"><a href="#创建虚拟副屏" class="headerlink" title="创建虚拟副屏"></a>创建虚拟副屏</h3><p>仅实现屏幕镜像尚不能满足副屏需求，我们需要创建一个独立的显示空间。</p><p>在电脑上下载并运行 <strong>ParsecVDisplay</strong>。</p><p>启动软件，点击 <code>Add Display</code>，系统将自动创建一个虚拟显示器。</p><p>在该虚拟显示器上右键，可以进行详细配置：</p><ul><li><p>Resolution: 设置分辨率。</p></li><li><p>Refresh Rate: 设置刷新率。</p></li><li><p>Orientation: 设置方向（横向、纵向等）。</p></li></ul><p><strong>关键项：记录 <code>\\.\DISPLAYx</code>（x为数字）的值，下一步将用到。</strong></p><h3 id="配置Sunshine串流虚拟屏幕"><a href="#配置Sunshine串流虚拟屏幕" class="headerlink" title="配置Sunshine串流虚拟屏幕"></a>配置Sunshine串流虚拟屏幕</h3><p>现在，我们需要让Sunshine捕获并串流我们刚创建的虚拟屏幕。</p><p>打开Sunshine的Web配置页面，进入 <code>配置</code> -&gt; <code>音频/视频</code> 标签页。</p><p>在 <code>输出名称</code> 字段中，填入上一步记录的 <code>\\.\DISPLAYx</code> 值。</p><p>（可选）配置音频：若希望电脑扬声器统一输出声音，可进行如下设置：</p><p>打开<code>设备管理器</code> -&gt; <code>声音、视频和游戏控制器</code>，在您正在使用的扬声器设备上右键，选择 <code>属性</code> -&gt; <code>详细信息</code> -&gt; <code>属性</code>，在下拉菜单中选择设备id，记录下面属性值。</p><p>在Sunshine的 <code>音频输出设备</code> 和 <code>虚拟音频输出设备</code> 字段中，均填入该值。</p><p>同时确保 <code>安装Steam音频驱动程序</code> 选项处于<code>禁用</code>状态。</p><p>完成所有配置后，务必在任务栏右键Sunshine图标，选择 <code>Restart</code> 以重启服务。</p><h3 id="验证与最终设置"><a href="#验证与最终设置" class="headerlink" title="验证与最终设置"></a>验证与最终设置</h3><p>从平板端的Moonlight断开连接，然后重新连接。此时，平板应显示为一块空白或带有壁纸的“新屏幕”。</p><p>在电脑上打开 <code>设置</code> -&gt; <code>系统</code> -&gt; <code>显示</code>。你将看到两个屏幕标识，其中一块即为你的虚拟副屏。</p><p>你可以在此界面中，通过拖拽屏幕图示来调整物理屏幕与虚拟副屏的相对位置，并可分别为它们设置合适的分辨率与缩放比例。</p><div class="note info flat"><ul><li>重要提示：在Sunshine中修改任何配置后，都必须执行 <code>Restart</code> 才能生效。</li></ul></div><h2 id="常见问题与解决方法"><a href="#常见问题与解决方法" class="headerlink" title="常见问题与解决方法"></a>常见问题与解决方法</h2><ol><li>忘记Sunshine的Web界面用户名&#x2F;密码</li></ol><p>解决：卸载Sunshine后重新安装，即可重置凭据。</p><ol start="2"><li>启用虚拟显示器后，Sunshine报错：<code>Fatal: Unable to find display or encoder...</code></li></ol><p>解决：</p><ul><li>检查Sunshine <code>配置</code> -&gt; <code>音频/视频</code> -&gt; <code>输出名称</code> 是否与ParsecVDisplay中显示的 <code>\\.\DISPLAYx</code> 完全一致。</li><li>重启Sunshine服务。</li></ul><ol start="3"><li>Moonlight端提示<code>串流终结，检查防火墙和端口转发规则</code></li></ol><p>解决：</p><ul><li><p>首先，确认Moonlight中输入的电脑IP地址正确无误。</p></li><li><p>其次，检查虚拟屏幕配置是否正确（参考问题2的解决方案）。</p></li><li><p>再次，重启Sunshine服务。</p></li><li><p>最后，对于笔记本电脑，请进入BIOS&#x2F;UEFI设置或显卡控制面板，关闭“独显直连”模式，切换至“混合图形”模式，然后重启电脑。此举是因为独显直连模式下，核显被屏蔽，可能导致Sunshine无法正常捕获屏幕。混合模式能自动调度核显与独显，在保证性能的同时兼顾兼容性与能效。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 无线串流 </tag>
+            
+            <tag> 扩展副屏 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MCP教程</title>
       <link href="/2025/10/04/MCP%E6%95%99%E7%A8%8B/"/>
       <url>/2025/10/04/MCP%E6%95%99%E7%A8%8B/</url>
